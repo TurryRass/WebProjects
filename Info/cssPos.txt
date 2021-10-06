@@ -1,0 +1,8 @@
+there are four types of positions in css :
+1.static:it is the default way of position setting starting from the screen:
+2.relative:this make the element change its poistion relative to its previous position.if you say left:5px then it will move 5 pixels from its original or now position.due to this it will create a space or gap in its original position.
+absolute:this will change the element position to its parent element position{that is element in which it is in.}
+fixed:it will fix the object in that position itself where it has been told and will not move at all.
+sticky:it will make something stick on the screen and will not move from the default position and will look like it has sticked.
+to move in different directions after setiing the position use:
+left,right,top,bottom{this will change the postion from the bottom.}

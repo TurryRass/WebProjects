@@ -1,0 +1,21 @@
+see now first for padding:
+if you dont undertsnad even after this then go and prcatice and recall ok.
+now when we do padding it means we want to create spaece between the borderand the main elemet like paragraph here.
+when we do left padding then to creaet space between border and elemet the elemet is sent to the right and hence we get space between the elemeent and the border.
+when we do right padding then space is created between the right border and the element,in this case ytyhe eleemt is sent to the left side.
+when top padding then elemet is sent below.
+when bottom padding the border of the box itself goes down as it cant push the elemet as there is already top padding for it.
+when padding from all directions then the above conditionsn are maintained and the thing is fone one by one.
+
+now if too much of padding given that the letters have been also padded then in case of left and right padding the box starts expaning in the psoitive x direction.and in case of top and bottom in negative y direction.
+
+margin works te same way but only cretaes space between border of the elemet and amrgin in a way says that atleast this muvh distnce should be maintained between any element near me.it itself have a margin betwen the screen left,top,right,bottom if any possible as showj in the html file for this where margin is between the right of screen and the brder of element.
+
+
+
+what do box sizing do:
+see box sizing it extremely helpful in when we want that the box does not get out or get bigger then a width provided by me and till the padding is is maximum and had covered the words also.
+see box sizing is also helpful in margin as it gives no margin to top snd bottom and margin is only given to left and right.
+this all box sizing is useful when we want to test something.
+
+and box model is an extremely important or vitl part when it comes to web development.
