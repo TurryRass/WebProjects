@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+
+    <title>{% block title %}   {% endblock title %}</title>
+    {% block css %}{% endblock css %}
+  </head>
+  <body>
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="/">iCoder</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item {% block home %}{% endblock %}">
+              <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item {% block about %}{% endblock %}">
+              <a class="nav-link" href="/about">About</a>
+            </li>
+            <li class="nav-item {% block contact %}{% endblock %}">
+              <a class="nav-link" href="/contact">Contact</a>
+            </li>
+            <li class="nav-item {% block blog %}{% endblock %}">
+              <a class="nav-link" href="/blog">Blog</a>
+            </li>
+          </ul>
+          <div class="form-inline ml-auto">
+          <form method="get" action="/search" class="my-2 my-lg-0 mx-4">
+            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="query" id="query">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+          </form>
+
+          {% if user.is_authenticated %}
+          {% comment %} in below ml-auto takes a margin from left and then looks for how much margin is actually have to be taken from the right and when it does not get it , it gets settled at the extreme right of the container.But it makes sure that the margin from the left is also the same at everytime even though right has not been assigned.{% endcomment %}
+          <ul class="navbar-nav mr-3">
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-expanded="false">
+                {{request.user}}
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <li><a class="dropdown-item" href="/logout">Logout</a></li>
+              </ul>
+            </li>
+          </ul>
+          {% else %}
+          <!-- Button trigger user signUp modal -->
+          <button type="button" class="btn btn-outline-success my-2 my-sm-0 mx-2" data-toggle="modal" data-target="#logInModal">Login</button>
+
+          <!-- Button trigger user signUp modal -->
+          <button type="button" class="btn btn-outline-success my-2 my-sm-0" data-toggle="modal" data-target="#signUpModal">SignUp</button>
+          {% endif %}
+        </div>
+        </div>
+      </nav>
+
+    {% for message in messages  %}
+    <div class="alert alert-{{message.tags}} alert-dismissible fade show" role="alert">
+      <strong>Message:</strong> {{message}}.
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+    </div>
+    {% endfor %}
+
+<!-- user logIn modal -->
+<div class="modal fade" id="logInModal" tabindex="-1"   aria-labelledby="logInModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="logInModalLabel">Login Here</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form action="/login" method="post">{% csrf_token %}
+          <div class="mb-3">
+            <label for="loginUsername" class="form-label">Username</label>
+            <input type="text" class="form-control" id="loginUsername" name="loginUsername" placeholder="user name">
+          </div>
+          <div class="mb-3">
+            <label for="loginPassword" class="form-label" >Password</label>
+            <input type="password" class="form-control" id="loginPassword" name="loginPassword" placeholder="password" >
+          </div>
+          <button type="submit" class="btn btn-primary">Login</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- user signUp modal -->
+<div class="modal fade" id="signUpModal" tabindex="-1" aria-labelledby="signUpModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="signUpModalLabel">SignUp Here</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form action="/signUp" method="post">{% csrf_token %}
+          <div class="mb-3">
+            <label for="userName" class="form-label">Username (Must Contain Both First and Last name)</label>
+            <input type="text" class="form-control" id="userName" name="userName" placeholder="user name" required>
+          </div>
+          <div class="mb-3">
+            <label for="email" class="form-label">Email address</label>
+            <input type="email" class="form-control" id="email" name="email" placeholder="name@example.com" required>
+          </div>
+          <div class="mb-3">
+            <label for="password1" class="form-label" >Password</label>
+            <input type="password" class="form-control" id="password1" name="password1" placeholder="password" required >
+          </div>
+          <div class="mb-3">
+            <label for="password2" class="form-label" >Confirm Password</label>
+            <input type="password" class="form-control" id="password2" name="password2" placeholder="confirm password" required >
+          </div>
+          <button type="submit" class="btn btn-primary">Sign Up</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+    {% block body %}  {% endblock body %}
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+    {% block js %}
+    <script>
+      let previews = Array.from(document.getElementsByClassName('preview'))
+      previews.forEach(element => {
+        element.innerHTML = element.innerText
+      });
+    </script>
+    {% endblock js %}
+  </body>
+</html>

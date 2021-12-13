@@ -1,0 +1,91 @@
+{% extends 'base.html' %}
+{% block title%}
+{{post.title}}
+{% endblock %}
+
+{% load humanize %}
+{% load extras %}
+
+{% block body %}
+<div class="container my-3">
+  <div class="blog-post">
+    <img style="border-radius:4px" width="100%" height="600px" src="/media/{{post.thumbnail}}"
+      alt="{{post.title|truncatechars:15}}">
+    <h2 class="blog-post-title my-3">{{post.title}}</h2>
+    <p class="blog-post-meta">{{post.timestamp}} by <a href="/about">{{post.author}}</a> ({{post.views}} views)</p>
+    <p>{{post.content|safe|linebreaks}}</p>
+    <hr>
+  </div>
+</div>
+<div class="container">
+  {% if not user.is_authenticated %}
+  <h5 style="margin-bottom:30px">Please Login to see and post comments.</h5>
+  {% else %}
+  <h2>Commments ({{comments.count}})</h2>
+  <form action="/blog/postComment" method='post'>{% csrf_token %}
+    <div class="form-group">
+      <input class="form-control" type="text" name="comment" placeholder="Enter Comment Here">
+    </div>
+    <input type="hidden" name="parentSno" value="">
+    <input type="hidden" name="postSno" value="{{post.sno}}">
+    <input class="btn btn-primary" type="submit" value="Comment">
+  </form>
+  {% for comment in comments %}
+  <div class="row my-3">
+    <div class="col-md-1">
+      <img class="mx-auto d-block w-100" style="border:2px solid black;border-radius:15px" src="\static\img\user.jpg"
+        alt="userImg">
+    </div>
+    <div class="col-md-11">
+      <b style="color:blue">{{comment.user.username}}</b> <span
+        class="badge badge-secondary">{{comment.timestamp|naturaltime}}</span>
+      <div>
+        {% if comment.comment|length < 139 %} 
+        {{comment.comment}} 
+        {% else %} 
+        <span id="big_content">{{comment.comment|truncatechars:139}}<span><a id='read'>Read More</a>
+        {% endif %}
+      </div>
+      <p class="my-2">
+        <button class="btn btn-primary btn-sm" type="button" data-toggle="collapse"
+          data-target="#replyBox{{comment.sno}}" aria-expanded="false" aria-controls="replyBox{{comment.sno}}">
+          Reply
+        </button>
+      </p>
+      <div class="collapse" id="replyBox{{comment.sno}}">
+        <div class="card card-body my-3">
+          <form action="/blog/postComment" method='post'>{% csrf_token %}
+            <div class="form-group">
+              <input class="form-control" type="text" name="comment" id="comment" placeholder="Enter Reply Here">
+            </div>
+            <input type="hidden" name="parentSno" value="{{comment.sno}}">
+            <input type="hidden" name="postSno" value="{{post.sno}}">
+            <input class="btn btn-primary" type="submit" value="Reply">
+          </form>
+        </div>
+      </div>
+      <div class="replies bg=danger my-2">
+        {% for reply in replyDict|get_val:comment.sno %}
+          {% if reply.comment|length > 0%}
+          <div class='row my-3'>
+            <div class="col-md-1">
+              <img class="mx-auto d-block" width="90%" style="border:2px solid black;border-radius:15px"
+                src="\static\img\user.jpg" alt="userImg">
+            </div>
+            <div class="col-md-11">
+              <b style="color:blue">{{reply.user}}</b> <span
+              class="badge badge-secondary">{{reply.timestamp|naturaltime}}</span>
+              <div>
+                {{reply.comment}}
+              </div>
+            </div>
+          </div>
+          {% endif %}
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+  {% endfor %}
+  {% endif %}
+</div>
+{% endblock body %}

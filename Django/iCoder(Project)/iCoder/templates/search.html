@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% block title%}
+iCoder - Search Results
+{% endblock %}
+
+{% block body %}
+<div class="container">
+{% if all_posts|length > 0%} 
+<h6 class="my-3">About {{results_found}} results ({{find_time|slice:":6"}} Seconds) </h6>
+{% for post in all_posts %}
+<div class="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm    h-md-250 my-4 position-relative">
+
+        <div class="col p-4 d-flex flex-column position-static">
+          <strong class="d-inline-block mb-2 text-primary">Article By <a href="/about">{{post.author}}</a></strong>
+          <h3 class="mb-0">{{post.title}}</h3>
+          <div class="mb-1 text-muted">{{post.timestamp}}</div>
+          <p class="card-text mb-auto my-2">{{post.content|truncatechars:100}}</p>
+          <div>
+                <a href="/blog/{{post.sno}}" role="button" class="btn btn-primary">Continue reading</a>
+          </div>
+        </div>
+        <div class="col-auto d-none d-lg-block">
+          <img class="bd-placeholder-img" width="400" height="250" src="/media/{{post.thumbnail}}" aria-label="Placeholder: Thumbnail"></img>
+        </div>     
+</div>
+{% endfor %}
+</div>
+{% else %}
+<div class="my-2">
+  Your search - <b>{{query|truncatechars:10}}</b> - did not match any documents.
+<span>Suggestions:<span>
+<ul>
+  <li>Make sure that all words are spelled correctly.</li>
+  <li>Try different keywords.</li>
+  <li>Try more general keywords.</li>
+  <li>Try fewer keywords.</li>
+</ul>
+</div>
+{% endif %}
+</div>
+{% endblock body %}

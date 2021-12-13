@@ -1,0 +1,2 @@
+see the thing is base.html in reality have access to all the variables in the database and so it is also very special but in other cases either we have to pass that variable or will need to define it in that particular function like in this project we have blogpost(in view.py of blog) which passes dictionary and so only blogpost.html can use them in it.
+so the thing is base.html is a special file in django. 

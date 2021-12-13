@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% block title %}
+Welcome To Contact Page.
+{% endblock %}
+
+{% block contact %}
+active
+{% endblock %}
+
+{% comment %} {% block css %}{% endblock css %} {% endcomment %}
+
+{% block body %}
+<div class="container my-3">
+<form method="post" action="/contact">{% csrf_token %}
+  <div class="mb-3">
+    <label for="email" class="form-label">Email address</label>
+    <input type="email" class="form-control" id="email" name="email" aria-describedby="emailHelp">
+    <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+  </div>
+  <div class="mb-3">
+    <label for="username" class="form-label">Name</label>
+    <input type="text" class="form-control" id="username" name="username">
+  </div>
+  <div class="mb-3">
+    <label for="password" class="form-label">Password</label>
+    <input type="password" class="form-control" id="password" name="password">
+  </div>
+  <div class="mb-3">
+    <label for="textarea" class="form-label">Enter Below For Why You Want To Contact Us</label>
+    <textarea name="textarea" id="textarea" class="form-control" cols="30" rows="5"></textarea>
+  </div>
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+</div>
+{% endblock body %}
