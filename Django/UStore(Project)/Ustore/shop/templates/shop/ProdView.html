@@ -1,0 +1,38 @@
+{% extends 'shop/base.html' %}
+
+{% block title %}
+UStore - {{product.product_name}}
+{% endblock %}
+
+{% block css %}
+    .productView {
+        display: -ms-flexbox;
+        display: flex;
+        -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+        margin-left: -105px;
+        width:540px;
+        height:500px;
+    }
+{% endblock %}
+
+{% block body %}
+<div class="container my-4">
+    <div class="row">
+        <div class="col-md-4">
+            <div class="productView">
+                <img src="/media//{{product.Image}}" width="90%" height="100%">
+            </div>
+            <div class="row">
+                <button class="btn btn-primary mx-2 my-2"> Buy Now</button>
+                <button class="btn btn-primary mx-2 my-2"> Add To Cart</button>
+            </div>
+        </div>
+        <div style="flex: 0 0 50%;margin-left: 42px;" >
+            <h2>{{product.product_name}}</h2>
+            <h4><b> $ {{product.price}}</b></h4>
+            <p>{{product.desc}}</p>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,114 @@
+{% extends 'shop/base.html' %}
+
+{% block title %}
+UStore - DeliveryTracker
+{% endblock %}
+
+{% block body %}
+<div class="container">
+  <div id="col">
+    <h2>UStore Tracker - Enter your Order Id and email to track your order.</h2>
+  </div>
+  <div id="col" class="my-3">
+    <form class="row g-3 my-3" method="post" action="#" id="trackerForm" autocomplete="off">{% csrf_token %}
+      <div class="col-md-6">
+        <label for="orderId" class="form-label">Order Id</label>
+        <input type="number" class="form-control" id="orderId" name="orderId" placeholder="Order Id" required>
+      </div>
+      <div class="col-md-6">
+        <label for="email" class="form-label">Email</label>
+        <input type="email" class="form-control" id="email" name="email" placeholder="email" required>
+      </div>
+      <div class="col-12 my-2">
+        <button type="submit" class="btn btn-primary">Track Order</button>
+      </div>
+    </form>
+  </div>
+  <div class="col my-4">
+    <div>
+      <h2 id='tStatus'></h2>
+      <ul class="list-group my-3" id="items">
+      </ul>
+    </div>
+  </div>
+  <div class="col my-4">
+    <div>
+      <h2 id='dStatus'></h2>
+      <ul class="list-group my-3" id="details">
+      </ul>
+    </div>
+  </div>
+</div>
+{% endblock %}
+{% block js %}
+<script>
+  $('#trackerForm').submit(function (event) {
+    $('#items').empty()
+    $('#details').empty()
+    var formData = {
+      'orderId': $('input[name=orderId]').val(),
+      'email': $('input[name=email]').val(),
+      'csrfmiddlewaretoken': $('input[name=csrfmiddlewaretoken]').val(),
+    }
+    console.log(formData)
+    $.ajax({
+      type: 'POST',
+      url: '/shop/tracker/',
+      data: formData,
+      encode: true
+    })
+
+      .done(function (data) {
+        console.log(data)
+        data = JSON.parse(data)
+        if (data['status'] == 'success') {
+          // to clean our site details about all tracking of products and then load the next lines of code to prevent execution of same codes
+          updates = data['updates']
+          $('#tStatus').empty()
+          $('#tStatus').append('Your Order Status')
+          for (i = 0; i < updates.length; i++) {
+            text = updates[i]['desc']
+            time = updates[i]['time']
+            mystr = `                <li class="list-group-item d-flex justify-content-between align-items-center">
+                    ${text}
+                    <span class="badge bg-primary rounded-pill">${time}</span>
+                </li>`
+            $('#items').append(mystr)
+          }
+          cart = JSON.parse(data['itemsJson'])
+        $('#dStatus').empty()
+        $('#dStatus').append('Your Order Details')
+        for (var item in cart) {
+          dStr = `                <li class="list-group-item d-flex justify-content-between align-items-center">
+                    ${cart[item][1]}
+                    <span style="display:flex;"class="badge rounded-pill"><div style="padding:5px">Price: &#8377;${cart[item][2]}<div>
+                       <div style="padding:5px">Qty: ${cart[item][0]}</div></span>
+                </li>`
+          $('#details').append(dStr)
+        }
+        }
+        else {
+          mystr = `                <li class="list-group-item d-flex justify-content-between align-items-center">
+                    Sorry,We are not able to fetch your order.Make sure you type correct orderId and email.
+                </li>`
+          $('#items').append(mystr)
+        }
+        let totalPrice = 0
+        cart = JSON.parse(data['itemsJson'])
+        console.log(cart)
+        for (var item in cart) {
+          totalPrice += cart[item][2] * cart[item][0]
+        }
+        // Since first 3 orderId were registered before this feature of OrderDetails so it shows NaN as the total price below but after that it's all ok.
+        // The password for admin is narendramodi and name is NarendraModi.
+
+        dStr = `                <li style="background-color:grey;color:white" class="list-group-item d-flex justify-content-between align-items-center">
+                    <p style="margin:0;padding:0">Your Total price for the above product is <b>&#8377; ${totalPrice}</b>.</p>
+                </li>`
+        $('#details').append(dStr)
+      })
+
+    event.preventDefault();
+  })
+</script>
+{% endblock %}
