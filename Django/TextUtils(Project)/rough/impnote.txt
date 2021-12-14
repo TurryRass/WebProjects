@@ -1,0 +1,6 @@
+        <!-- {{name}} is your name and {{place}} is your place. -->
+
+        the above is used when we want to put our user's given name somewehere in teh dictionary kind brackets.
+
+        # return HttpResponse('<h1><a href="https://google.com" target=__blank>Google</a></h1>')
+        # params = {'name':"Aniket",'place':'Andromeda Galaxy'}

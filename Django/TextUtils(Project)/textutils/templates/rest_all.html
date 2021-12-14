@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{title}}</title>
+
+    <style>
+        body,
+        html {
+            border: 0;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            background: whitesmoke;
+        }
+
+        .navbar {
+            display: flex;
+            background-color: rgb(39, 36, 36);
+            justify-content: center;
+            position: absolute;
+            width: 100%;
+            top: 0px;
+            left: 0px;
+            height: 7vh
+        }
+
+        .navbar ul {
+            position: relative;
+            left: -2%;
+            line-height: 1em;
+            margin: 0px;
+            padding: 0px;
+            align-self: center;
+        }
+
+        .navbar a {
+            font-size: 15px;
+            text-decoration: none;
+            /* color: #f5f5f5; */
+            color: #a5b8ff;
+            padding: 0px 30px;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            font-weight: bold;
+        }
+
+        .navbar a:hover {
+            color: rgb(73, 73, 255)
+        }
+
+        .logo a {
+            text-decoration: none;
+            position: absolute;
+            font-size: 38px;
+            font-family: sans-serif;
+            font-weight: bold;
+            /* color: rgb(255, 125, 125); */
+            color:#a5b8ff;
+            z-index: 1;
+            margin: 0px;
+            top: -1px;
+            left: 9vw
+        }
+
+        .logo:hover {
+            cursor: pointer;
+        }
+
+        #actionarea {
+            /* z-index: 2; */
+            width: 100vw;
+            height: 90vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #textarea {
+            background: #061f1f;
+            width: 80%;
+            height: 70%;
+            display: block;
+            color: wheat;
+            outline: none;
+            font-size: 5vh;
+            resize: none;
+            opacity: 0.7;
+            transition-property: all;
+            transition-duration: 0.1s;
+            margin-top: 5%;
+            border: 2px solid black
+            
+        }
+
+        #textarea:hover {
+            /* box-shadow: 1px 1px 2px rgb(95, 95, 255); */
+            /* box-shadow: -1px -1px 5px #00a1ff;
+            border: 2px solid #00a1ff; */
+            cursor:text;
+        }
+            
+
+        /* for the display of user's text: */
+
+        p {
+            position: absolute;
+            left: 9.6%;
+            top: 5%;
+            font-size: 30px;
+            color: #a0007e;
+            font-family: sans-serif;
+            /* margin: 30px auto; */
+            text-shadow: 1px 1px 100px rgb(148, 102, 255)
+        }
+
+        #counter_para {
+            color: #770000;
+            position: absolute;
+            top: 80%
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+
+        <nav class="navbar">
+            <ul>
+
+                <a href="http://127.0.0.1:8000/">Home</a>
+                <a href="http://127.0.0.1:8000/">Subscription</a>
+                <a href="/account" target="__blank">Account</a>
+                <a href="/about" target="__blank">About Us</a>
+                <a href="">Help</a>
+
+            </ul>
+        </nav>
+
+        <div class="logo">
+            <a href=''>TextUtils</a>
+        </div>
+
+    </header>
+
+    <p>Your Modified Text Is here-</p>
+    <form id='actionarea' action="display" method='get'>
+
+        <!-- <h1 class="top">Welcome!</h1> -->
+
+        <!-- typing area -->
+        <textarea name="text" id="textarea" spellcheck="false" disabled>{{text}}</textarea>
+        <p id='counter_para'>{{extra}}</p>
+
+    </form>
+
+
+</body>
+
+</html>
