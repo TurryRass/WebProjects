@@ -1,0 +1,66 @@
+{% extends 'base.html' %}
+
+{% block blog %}<b>{% endblock blog %}
+
+    {% load static %}
+    {% block link %}
+    <link rel="stylesheet" href="{% static 'js/year.js' %}">
+    {% endblock link %}
+
+    {% block title %}MyBlog - Blog{% endblock title %}
+
+    {% block body %}
+
+    <div style="margin:4% auto" class="home-articles max-width-1 m-auto font2">
+        <h2>
+            Articles
+        </h2>
+        <script>
+            function gear(params) {
+                if (params == '2019') {
+                    window.location.href = '/blog/year2019'
+                }
+                if (params == '2020') {
+                    window.location.href = '/blog/year2020'
+                }
+                if (params == '2021') {
+                    window.location.href = '/blog/year2021'
+                }
+            }
+        </script>
+        <div class="Year adjust-year-search">
+            <h3>
+                Year
+            </h3>
+            <div>
+                <input type="radio" name="BlogYear" onclick="gear(2019)"> 2019
+            </div>
+            <div>
+                <input type="radio" name="BlogYear" onclick="gear(2020)">
+                2020
+            </div>
+            <div>
+                <input type="radio" name="BlogYear" onclick="gear(2021)">
+                2021
+            </div>
+        </div>
+        {% for post in all_posts %}
+        <div class="home-article font1">
+            <div class="img">
+                <a href="/blog/{{post.ref_no}}"><img src="/media/{{post.thumbnail}}" alt=""></a>
+            </div>
+            <div class="para">
+                <a href="/blog/{{post.ref_no}}" class="a-new">
+                    <h3>
+                        {{post.title}}
+                    </h3>
+                </a>
+                <span>Article Author - <a class='author' href='/about{{post.author}}'>{{post.author}}</a></span><br>
+                <span>{{post.timestamp}}</span><br>
+                <span>Views - {{post.views}}</span>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
+    {% endblock body %}

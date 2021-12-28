@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+
+{% block title %}MyBlog - Home{% endblock title %}
+{% block home %}<b>{% endblock home %}
+
+{% load static %}
+
+{% block body %}
+<div class="content max-width-1 m-auto my-2">
+    <div class="content-left font1">
+        <h1>The genius of bloggers</h1>
+        <p>
+            Welcome to MyBlog, a place that gives freedom to bloggers
+            and see genius in them. Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum illum soluta
+            numquam. Odio deserunt accusantium esse quod, incidunt corporis veniam quis quo rerum blanditiis. Aut
+            odio enim ratione! Tenetur repudiandae totam inventore dolor expedita eius fuga nobis et voluptatibus,
+            quisquam doloribus officia iure consequatur rerum sequi? Modi ea aliquam ad.
+        </p>
+    </div>
+    <div class="content-right">
+        {% comment %} <img src="Resources/PostImg/DurgaMaa.jpg" alt="ThemeImg"> {% endcomment %}
+        <img src="{% static 'Resources/PostImg/DurgaMaa.jpg' %}" alt="ThemeImg">
+    </div>
+</div>
+
+<div style="padding-top:10px" class="max-width-1 m-auto">
+    <hr>
+</div>
+
+<div style="margin:4% auto" class="home-articles max-width-1 m-auto font2">
+    <h2>
+        Featured Articles
+    </h2>
+    {% for post in posts %}
+    <div class="home-article font1">
+        <div class="img">
+            <a href="blog/{{post.ref_no}}"><img src="media/{{post.thumbnail}}" alt=""></a>
+        </div>
+        <div class="para">
+            <a href="blog/{{post.ref_no}}" class="a-new">
+                <h3>
+                    {{post.title}}
+                </h3>
+            </a>
+            <span>Article Author - <a class='author' href='/about{{post.author}}'>{{post.author}}</a></span><br>
+            <span>{{post.timestamp}}</span><br>
+            <span>Views - {{post.views}}</span>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+{% endblock body %}
+
+{% block js %}
+{% endblock js %}

@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block title %}MyBlog - Contact{% endblock title %}
+
+{% block contact %}<b>{% endblock contact %}
+
+{% block body %}
+
+<div style="margin:2% auto" class="container max-width-1 m-auto font2">
+    <h2>
+        Contact Us By Feeling The Below Form
+    </h2>
+    <form id='contactForm' method='post' action='/contact/'>{% csrf_token %}
+        <input type="text" name="name" id="name" placeholder="Enter Your Name Here" required autocomplete="off">
+        <input type="email" name="email" id="email" placeholder="Enter Your Email Here" required autocomplete="off">
+        <input type="password" name="pass" id="pass" placeholder="Enter Your Password Here" required autocomplete="off">
+        <textarea style="overflow-y:visible" placeholder="Enter Why You Want To Contact Us Here!" required id='text' name='text'></textarea>
+        <p class="font1" id="checkText">
+            <input type="checkbox" name="check" id="check" required>
+            By clicking it accept to your <a class='safe_link' href="/terms-conditions">terms and conditons</a> and
+            <a class='safe_link' href="/policy">privacy policy.</a>
+        </p>
+        <button id="contactBut">
+            Submit Form
+        </button>
+    </form>
+</div>
+{% endblock body %}
+

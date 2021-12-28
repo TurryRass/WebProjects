@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block title %}MyBlog - About{% endblock title %}
+
+{% if about %}
+    {% block about %}<b>{% endblock about %}
+{% endif %}
+
+{% load static %}
+
+{% block link %}
+    <link rel="stylesheet" href="{% static 'css/contact.css' %}">
+{% endblock link %}
+
+{% block body %}
+    <div class="container max-width-1 m-auto my-2">
+        <h2>{{title}}</h2>
+        {% for file in files %}
+            <p style='text-align: justify;word-spacing: 2px;font-weight: 600;margin:2% 0%;'>{{file}}
+        {% endfor %}
+    </div>
+{% endblock body %}

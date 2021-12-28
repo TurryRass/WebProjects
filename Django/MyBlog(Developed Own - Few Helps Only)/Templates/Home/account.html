@@ -1,0 +1,68 @@
+{% extends 'base.html' %}
+
+{% block account %}<b>{% endblock account %}
+
+{% load static %}
+
+{% block link %}
+    <link rel="stylesheet" href="{% static 'css/account.css' %}">
+{% endblock link %}
+
+{% block body %}
+    {% if user.is_authenticated %}
+    <div style="margin:2% auto" class='container max-width-1 m-auto'>
+        <h2 class="font2">
+            User Account Details
+        </h2>
+        <div id="user_account">
+            <div id="user_img">
+                <a href="/account">
+                    <img src="{% static 'Resources/Extras/user.jpg' %}" alt="">
+                </a>
+                    {% comment %} <img src="{% static 'Resources/Extras/user.jpg' %}" alt=""> {% endcomment %}
+            </div>
+            <div id="user_info">
+                <span>User Name:{{request.user}}</span>
+                <span>First Name:{{request.user.first_name}}</span>
+                <span>Last Name:{{request.user.last_name}}</span>
+                <span>User Email:{{request.user.email}}</span>
+                <span>Date Joined:{{request.user.date_joined}}</span>
+                <a href="/logout">
+                    <button class='btn' id='logout'>
+                        Logout
+                    </button>
+                </a>
+            </div>
+        </div>
+    </div>
+    {% else %}
+    <div style="margin:2% auto" class='container max-width-1 m-auto font2' id='signin_form'>
+        <form method='post' action="/signin/">{% csrf_token %}
+            <input class='decor-input' type="text" name="username" id="username" placeholder='Username' maxlength="100" minlength="3" required>
+            <input class='decor-input' type="text" name="firstname" id="firstname" placeholder='First Name' maxlength="100" minlength="3" required>
+            <input class='decor-input' type="text" name="lastname" id="lastname" placeholder='Last Name' maxlength="100" minlength="3" required>
+            <input class='decor-input' type="email" name="useremail" id="useremail" placeholder='Email' maxlength="200" required>
+            <input class='decor-input' type="password" name="userpassword" id="userpassword" placeholder='Password' maxlength="12" minlength="7" required>
+            <button type='submit' class="btn" id='btn-signIn'>
+                Create Account
+            </button>
+        </form>
+        <button class="btn" id='btn-login' onclick="login()">
+            Login
+        </button>
+    </div>
+    {% endif %}
+{% endblock body %}
+{% block js %}
+    <script>
+        function login(){
+            document.getElementById('signin_form').innerHTML = `        <form method='post' action="/login/" id='signin_form'>{% csrf_token %}
+            <input class='decor-input' type="text" name="username" id="username" placeholder='Username' maxlength="100" minlength="3" required>
+            <input class='decor-input' type="password" name="userpassword" id="userpassword" placeholder='Password' maxlength="12" minlength="7" required>
+            <button class="btn" id='btn-login'>
+                Login
+            </button>
+        </form>`
+        }
+    </script>
+{% endblock js %}

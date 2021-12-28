@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+{% load static %}
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}{% endblock title %}</title>
+    <link rel="stylesheet" href="{% static 'css/contact.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/utils.css' %}">
+    <link rel="stylesheet" href="{% static 'css/mobile.css' %}">
+    {% block link %}{% endblock link %}
+    {% block js %}{% endblock js %}
+</head>
+
+<body>
+    <header>
+        <nav class="navbar max-width-1 m-auto">
+            <div class="nav-left">
+                <a href="/"><span>My</span>Blog</a>
+            </div>
+
+            <ul class="navList">
+                <a href="/">{% block home %}{% endblock home %}Home</b></a>
+                <a href="/contact">{% block contact %}{% endblock contact %}Contact</b></a>
+                <a href="/about">{% block about %}{% endblock about %}About</b></a>
+                <a href="/blog">{% block blog %}{% endblock blog %}Blog</b></a>
+                <a href="/account">{% block account %}{% endblock account %}Account</b></a>
+            </ul>
+
+            <div class="nav-right">
+                <form action="/search" method="get">
+                    <input type="text" id="SearchBox" name='query' placeholder="Search Articles" autocomplete="off">
+                    <button class='m-auto' id="Search">
+                        Search
+                    </button>
+                </form>
+            </div>
+        </nav>
+    </header>
+
+    {% for message in messages %}
+        {% if user.is_authenticated %}
+            <script>
+                if('{{message}}' == 'If you are a new user make sure that in the sign in form: 1.username,firstname,lastname should be more than 3 and less than 101 characters and firstname,lastname should be alphanumeric only 2.email should be less than 200 characters 3.password should be more than 7 and less than 12 characters and should be alphanumeric only.'){
+                    alert('Welcome {{request.user}},check your account details here!')
+                }
+                else{
+                    alert('{{message}}')
+                }
+            </script>
+        {% else %}
+        <script>
+            alert('{{message}}')
+        </script>
+        {% endif %}
+    {% endfor %}
+
+    <div class="max-width-1 m-auto">
+        <hr>
+    </div>
+    
+    {% block body %}{% endblock body %}
+
+    <footer style="position: relative;bottom:0;" class=" m-auto font2">
+        <p style="margin-left:15px;">
+            Copyright@2019 - 22
+        </p>
+    </footer>
+
+</body>

@@ -1,0 +1,71 @@
+{% extends 'base.html' %}
+
+{% block title %}MyBlog - Search Results{% endblock title %}
+
+{% block body %}
+<div style="margin:2% auto" class="home-articles max-width-1 m-auto font2">
+    {% if allow_posts %}
+    <h2>
+        Search Results For {{query}} (0.{{timeout|slice:"4:6"}} seconds)
+    </h2>
+    <div class="Year adjust-year-search">
+        <h3>
+            Year
+        </h3>
+        <script>
+            function gear(params) {
+                if (params == '2019') {
+                    window.location.href = '/blog/year2019'
+                }
+                if (params == '2020') {
+                    window.location.href = '/blog/year2020'
+                }
+                if (params == '2021') {
+                    window.location.href = '/blog/year2021'
+                }
+            }
+        </script>
+        <div>
+            <input type="radio" name="BlogYear" id=""> 2019
+        </div>
+        <div>
+            <input type="radio" name="BlogYear" id=""> 2020
+        </div>
+        <div>
+            <input type="radio" name="BlogYear" id=""> 2021
+        </div>
+    </div>
+    {% for post in search_posts %}
+    <div class="home-article font1">
+        <div class="img">
+            <a href="/blog/{{post.ref_no}}">
+                <img src="/media/{{post.thumbnail}}" alt="">
+            </a>
+        </div>
+        <div class="para">
+            <a href="blogpost.html" class="a-new">
+                <h3>
+                    {{post.title}}
+                </h3>
+            </a>
+            <span>Article Author - <a href="/about{{post.author}}">{{post.author}}</a></span><br>
+            <span>{{post.timestamp}}</span><br>
+            <span>Views - {{post.views}}</span>
+        </div>
+    </div>
+    {% endfor %}
+    {% else %}
+    <div class='font-2'>
+        <span>Your search - <b>{{query|truncatechars:72}}</b> - did not match any documents.</span>
+        <div style="margin:0.4vw 0px">
+            Suggestions
+        </div>
+        <li>Make sure that all words are spelled correctly.</li>
+        <li>Try to enter something to the search bar.</li>
+        <li>Try different keywords.</li>
+        <li>Try more general keywords.</li>
+        <li>Try fewer keywords.</li>
+    </div>
+    {% endif %}
+</div>
+{% endblock body %}
