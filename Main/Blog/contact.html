@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog - Contact Us</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/utils.css">
+    <link rel="stylesheet" href="css/contact.css">
+    <link rel="stylesheet" href="css/mobile.css">
+    <script src="js/index.js"></script>
+</head>
+
+<body>
+    <header>
+        <nav class="navbar max-width-1 m-auto">
+            <div class="nav-left">
+                <a href=""><span>My</span>Blog</a>
+            </div>
+
+            <ul class="navList">
+                <a href="index.html">Home</a>
+                <a href="/">Contact</a>
+                <a href="about.html">About</a>
+            </ul>
+
+            <div class="nav-right">
+                <form action="/search.html" method="get">
+                    <input type="text" id="SearchBox" name='query' placeholder="Search Articles" autocomplete="off">
+                    <button class='btn m-auto' id="Search">
+                        Search
+                    </button>
+                </form>
+            </div>
+        </nav>
+    </header>
+
+    <div style="padding-top:10px" class="max-width-1 m-auto">
+        <hr>
+    </div>
+
+    <div style="margin:2% auto" class="container max-width-1 m-auto font2">
+        <h2>
+            Contact Us By Feeling The Below Form
+        </h2>
+        <form id='contactForm'>
+            <input type="text" name="name" id="UserName" placeholder="Enter Your Name Here" required autocomplete="off">
+            <input type="email" name="name" id="UserName" placeholder="Enter Your Email Here" required autocomplete="off">
+            <input type="password" name="name" id="userPass" placeholder="Enter Your Password Here" required autocomplete="off">
+            <textarea placeholder="" required minlength="10" maxlength="450"></textarea>
+            <p class="font1" id="checkText">
+                <input type="checkbox" name="name" id="policy" required>
+                By clicking it accept to your <a href="">terms and conditons</a> and
+                <a href="">privacy policy.</a>
+            </p>
+            <button id="contactBut">
+                Submit Form
+            </button>
+        </form>
+    </div>
+    <footer style="position: fixed;bottom:0;" class=" m-auto font2">
+        <p style="margin-left:15px;">
+            Copyright@2021-22
+        </p>
+    </footer>
+</body>
+
+</html>

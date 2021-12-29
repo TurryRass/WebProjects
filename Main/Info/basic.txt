@@ -1,0 +1,19 @@
+html: body of a website and what the user see and also its the skeloton of the body
+please dont do any design with it .css is for design and not this.
+
+html other name is markup or markup is html's fancy name.
+
+css:design of our website or for design
+
+javascript:brain our website (python and other languages can also be used but its the most widely used one on the website but also need the support of otherssometimes and remember that other can also be used)it is for the backend of the website and python is best backend lanaguage.
+
+
+
+html:
+pre is used with para(p)
+bold(b) is replaced by strong(s) in html 5.But it is still present and we can use it but not recommend.
+italic(i) is replaced by em(em) in html 5. But it is still present and we can use it but not recommend.
+break(br) tag to break.its self-closing tag.
+horizontal line(hr) will give a horizontal line wherever we have used it.it is also self-closing.
+
+

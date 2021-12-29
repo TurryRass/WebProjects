@@ -1,0 +1,3 @@
+Q1.why in after pseudo element's background-image used in content class we have used ..?
+
+Ans1:In above .. is given as in after particularly only the image is what taken or the last name is what taken whichh is DurgaMaa.jpg and hence it gets unable to find the photo and hence no image will ve shown and by adding .. it says to see the whole given part rather than just the last part.
