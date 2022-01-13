@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+{% block title %}Spotify - Home{% endblock title %}
+
+{% block home %}<b class="green">{% endblock home %}
+
+{% load static %}
+{% load extras%}
+
+{% block css %}
+    <link rel="stylesheet" href="{% static 'css/home.css' %}">
+{% endblock css %}
+
+{% block body %}
+{% comment %} <div class="container bg-white s_font1"> {% endcomment %}
+{% for original_albums in albums %}
+<div class="container s_font1">
+    <div id="title">
+        <h1>{{categories|index:forloop.counter0}}</h1> <a href="/album{{forloop.counter}}">Show All</a>
+    </div>
+    
+    <div class="sample_songs">
+        {% for album in original_albums %}
+        <div class="card">
+            <div class="cover">
+                <img src="media/{{album.cover}}" alt="">
+            </div>
+            <div class="song_info s_font2">
+                <div class="play_img">
+                    {% comment %} In below 'm_list' is for 'music list' {% endcomment %}
+                    <a href="/music/songs{{album.sno}}">
+                        <img width="100%" id='load_m_list' src="{% static 'SiteResources/play-circle-regular.svg' %}" alt="Play">
+                    </a>
+                </div>
+                <span><b>Title:</b>{{album.title}}</span>
+                <span><b>Singer:</b>{{album.singer}}</span>
+                <p><b>Description:</b>{{album.description|truncatechars:120}}</p>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endfor %}
+{% endblock body %}

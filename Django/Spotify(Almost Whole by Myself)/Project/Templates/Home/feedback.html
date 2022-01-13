@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block feedback %}<b class='green'>{% endblock feedback %}
+
+{% load static %}
+
+{% block css %}
+    <link rel="stylesheet" href="{% static 'css/songs_list.css' %}">
+    <link rel="stylesheet" href="{% static 'css/feedback.css' %}">
+{% endblock css %}
+
+{% block body %}
+    <div class="songs_list_container">
+        <h1 class="mid_maker s_font1">
+            Feedback Form
+        </h1>
+        <form action="/feedback/" method="post" id="feedback_form" class="s_font2">{% csrf_token %}
+            <input type="text" name="username" id="username" placeholder="Username" min="2" required>
+            <input type="email" name="useremail" id="useremail" placeholder="Useremail" min="3" required>
+            <textarea name="feedback" id="feedback" placeholder="Write Your Feedback Here" minlength="10" required></textarea>
+            {% comment %} btn to submit this form is below {% endcomment %}
+            <button id="submit_btn" class="s_font2" type="submit">
+                Submit
+            </button>
+        </form>
+    </div>
+    <footer>
+        <span>
+            Copyright@2022-2023
+        </span>
+    </footer>
+{% endblock body %}

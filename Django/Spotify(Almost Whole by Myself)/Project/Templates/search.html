@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+
+{% block title %}Spotify - search results{% endblock title %}
+
+{% load static %}
+
+{% block css %}
+    <link rel="stylesheet" href="{% static 'css/home.css' %}">
+{% endblock css %}
+
+{% block body %}
+<div class="container s_font1">
+    
+        {% if all_results|length > 0 %}
+        <div id="title">
+            <h1>Search Results for {{query|truncatechars:35}}</h1>
+        </div>
+        <div class="sample_songs">
+        {% for album in all_results %}
+            <div class="card">
+                <div class="cover">
+                    <img src="/media/{{album.cover}}" alt="">
+                </div>
+                <div class="song_info s_font2">
+                    <div class="play_img">
+                        {% comment %} In below 'm_list' is for 'music list' {% endcomment %}
+                        <a href="/music/songs{{album.sno}}">
+                            <img width="100%" id='load_m_list' src="{% static 'SiteResources/play-circle-regular.svg' %}" alt="Play">
+                        </a>
+                    </div>
+                    <span><b>Title:</b>{{album.title}}</span>
+                    <span><b>Singer:</b>{{album.singer}}</span>
+                    <p><b>Description:</b>{{album.description|truncatechars:120}}</p>
+                </div>
+            </div>
+        {% endfor %}
+        {% else %}
+        <div id="no_results" class="s_font1">
+            <h1>No Results Found for {{query|truncatechars:25}}!</h1>
+            <h3 style="margin-top:1%"><b>Suggestions</b>:</h3>
+            <ul>
+                <li>
+                    Make sure that all words are spelled correctly.
+                </li>
+                <li>
+                    Try With Different Keywords.
+                </li>
+                <li>
+                    Try with more general keywords.
+                </li>
+                <li>
+                    Make sure you search is not too long.
+                </li>
+            </ul>
+        </div>
+        <footer>
+            <span style="font-family: 'Times New Roman';"class="s_font2">
+                Copyright@2022-2023
+            </span>
+        </footer>
+        {% endif %}
+        </div>
+</div>
+{% endblock body %}

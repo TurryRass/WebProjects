@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Spotify - {{title}}
+{% endblock title %}
+
+{% load static %}
+
+{% block css %}
+    <link rel="stylesheet" href="{% static 'css/home.css' %}">
+{% endblock css %}
+
+{% block body %}
+    <div class="sample_songs">
+    {% for album in albums %}
+        {% if not forloop.counter|divisibleby:4 %}
+        <div class="card">
+            <div class="cover">
+                <img src="media/{{album.cover}}" alt="">
+            </div>
+            <div class="song_info s_font2">
+                <div class="play_img">
+                    {% comment %} In below 'm_list' is for 'music list' {% endcomment %}
+                    <a href="/music/songs{{album.sno}}">
+                        <img width="100%" id='load_m_list' src="{% static 'SiteResources/play-circle-regular.svg' %}" alt="Play">
+                    </a>
+                </div>
+                <span><b>Title:</b>{{album.title}}</span>
+                <span><b>Singer:</b>{{album.singer}}</span>
+                <p><b>Description:</b>{{album.description|truncatechars:120}}</p>
+            </div>
+        </div>
+        {% else %}
+        </div>
+        <div class="sample_songs">
+            <div class="card">
+                <div class="cover">
+                    <img src="media/{{album.cover}}" alt="">
+                </div>
+                <div class="song_info s_font2">
+                    <div class="play_img">
+                        {% comment %} In below 'm_list' is for 'music list' {% endcomment %}
+                        <a href="/music/songs{{album.sno}}">
+                            <img width="100%" id='load_m_list' src="{% static 'SiteResources/play-circle-regular.svg' %}" alt="Play">
+                        </a>
+                    </div>
+                    <span><b>Title:</b>{{album.title}}</span>
+                    <span><b>Singer:</b>{{album.singer}}</span>
+                    <p><b>Description:</b>{{album.description|truncatechars:120}}</p>
+                </div>
+            </div>
+        {% endif %}
+    {% endfor %}
+    </div>
+{% endblock body %}

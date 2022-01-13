@@ -1,0 +1,12 @@
+.songs_list_container{
+    background-image: none;
+    background-color: black;;
+}
+
+.about{
+    width:80%;
+    height:auto;
+    margin:3% auto;
+    text-align:justify;
+    color:rgb(87, 255, 115);
+}

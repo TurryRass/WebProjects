@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}{% endblock title %}</title>
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
+    <link rel="stylesheet" href="{% static 'css/utils.css' %}">
+    {% block css %}{% endblock css %}
+</head>
+<body>
+    <nav>
+        <ul id='navUl'>
+            <div id="logo">
+                <a href='/'><img src="{% static 'SiteResources/logo.png' %}" alt="LogoSpotify"></a>
+                <div id="logo_title" class="s_font1">
+                    <a href="/">Spotify</a>
+                </div>
+            </div>
+            <li class='s_font2'><a href='/'>{% block home %}{% endblock home %}Home</b></a></li>
+            <li class='s_font2'><a href='/about'>{% block about %}{% endblock about %}About Us</b></a></li>
+            <li class='s_font2'><a href='/feedback'>{% block feedback %}{% endblock feedback %}Feedback</b></a></li>
+        </ul>
+        <form action="/search/" method='post'>{% csrf_token %}
+            <input type="search" name="query" id="search" 
+            placeholder="Search albums,songs and more">
+        </form>
+    </nav>
+    
+    {% block body %}{% endblock body %}
+    {% block js %}{% endblock js %}
+</body>
+</html>

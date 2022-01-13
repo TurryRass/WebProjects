@@ -1,0 +1,134 @@
+::-webkit-scrollbar{
+    width:1vw;
+}
+
+::-webkit-scrollbar-thumb{
+    background:transparent;
+    border:2px solid white;
+    border-radius: 100vw;
+}
+
+::-webkit-scrollbar-thumb:hover{
+    /* background:rgb(153, 153, 153); */
+    background:white;
+}
+
+.songs_list_container{
+    width:60vw;
+    height:70vh;
+    overflow-y: scroll;
+    border-radius: 1vh;
+    position: absolute;
+    top:10vh;
+    left:20vw;
+    right:20vw;
+    background-image: url('../SiteResources/bg.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    color:white;
+}
+
+.album_song{
+    display:flex;
+    justify-content: space-evenly;
+    align-items: center;
+    width:70%;
+    height:10%;
+    margin:4% 0% 2% 1.5%;
+    border-radius: 10px;
+    /* background-color: white; */
+    border:3px solid white;
+    transition:linear .2s all;;
+}
+
+.album_song:hover{
+    transition:linear .2s all;
+    background-color:white;
+    color:black;
+}
+
+.album_song:hover .m_ctrl_btn img{
+    transition:linear .2s all;
+    filter:contrast(1);
+}
+
+.img{
+    width:10%;
+    height:95%;
+}
+
+.img img{
+    width:100%;
+    height:100%;
+    margin-top:0.2vh;
+    clip-path: circle();
+}
+
+.name{
+    box-sizing: border-box;
+    width:50%;
+    font-size:0.8rem;
+    text-align: center;
+}
+
+.duration{
+    width:10%;
+}
+
+.m_ctrl_btn{
+    width:30%;
+    height:90%;
+}
+
+.m_ctrl_btn img{
+    width:100%;
+    height:100%;
+    filter:invert(1);
+    clip-path: circle();
+    cursor:pointer;
+}
+
+.bottom{
+    display:none;
+    /* display:flex; */
+    align-items:center;
+    justify-content:center;
+    flex-direction: column;
+    width:100%;
+    height:13vh;
+    /* background-color:rgb(78, 214, 84); */
+    /* background-color:rgb(255,255,255); */
+    background-color:rgb(138, 255, 138);
+    position:fixed;
+    /* border-top:5px solid rgb(114, 255, 114); */
+    bottom:0;
+}
+
+#myProgressBar{
+    width:80%;
+    /* margin:1% 0; */
+}
+
+.icons{
+    /* background-color: red;; */
+    width:80%;
+    height:50%;
+    margin-top:0.5%;
+    display:flex;
+    justify-content: space-evenly;
+}
+
+.icons div{
+    cursor: pointer;
+}
+
+.playsong_info{
+    position:absolute;
+    left:10vw;
+}
+
+.playsong_info img{
+    opacity:0;
+    transition: opacity 0.4s ease-in;
+}
+

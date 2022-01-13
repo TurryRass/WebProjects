@@ -1,0 +1,27 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;700&display=swap');
+
+/* in below 's' is for 'special' */
+
+.s_font1{
+    font-family: 'Noto Sans', sans-serif;
+    font-weight:700;
+}
+.s_font2{
+    font-family: 'Noto Sans', sans-serif;
+    font-weight: 400;
+}
+
+.bg-white{
+    width:100%;
+    background-color:white;
+}
+
+.green{
+    color:rgb(61, 255, 103)
+}
+
+.mid_maker{
+    margin-top:3%;
+    width:100%;
+    text-align: center;
+}
