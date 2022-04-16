@@ -1,0 +1,312 @@
+/* to not have default margin in anything */
+*{
+    margin:0;
+    padding: 0;
+    box-sizing:border-box;
+    overflow-x: hidden;
+}
+
+/* for the nav of the answer page */
+#answer_nav{
+    background-color:white;
+    width:100vw;
+    padding-top:15px;
+    padding-bottom: 10px;
+    padding-left:90px;
+    position:relative;
+    align-items:center;
+    display:flex;
+}
+
+#logo{
+    overflow-x:hidden;
+    /* margin:0px 50px; */
+    position:relative;
+    width:202px;
+    height:40px;
+    /* border:2px solid black; */
+}
+
+#logo_img{
+    width:100%;
+    height:100%;
+    margin-left:-81px;
+    background-color: transparent;
+    position: absolute;;
+}
+
+/* for the ul in the nav */
+#nav-ul{
+    display:flex;
+    justify-content:space-between;
+    width:25%;
+}
+
+#nav-ul a:hover{
+    color:rgb(104, 102, 102);
+}
+
+/* for the buttons present on the nav bar for sign_in and login */
+.login,.signin{
+    /* width:60px; */
+    padding:10px 25px;
+    border-radius:15px;
+    border:none;
+}
+
+/* for the index-container */
+#index-container{
+    margin-top:100px;
+    width:100vw;
+}
+
+/* for the search box in index-container */
+#search-material{
+    width:45%;
+    height:60px;
+    padding:10px;
+    margin-top:50px;
+    font-size:14px;
+    color:rgb(71, 71, 71);
+    border: 3px solid #64dd88;
+    outline:none;
+    border-radius: 25px;
+}
+
+#subject-header{
+    display:flex;
+    justify-content:space-between
+}
+
+.subject-container{
+    width:45%;
+    margin:50px auto;
+    height:auto;
+    /* border:2px solid black; */
+}
+
+#subject-grid{
+    margin:15px 0px;
+}
+
+/* for the model used in the page for the students */
+
+#ask-info{
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    width:100vw;
+    height:100%;
+    position:fixed;
+    top:0;
+    left:0;
+    background-color: rgba(0,0,0,0.5);
+}
+
+#ask-model{
+    display:flex;
+    flex-direction: column;;
+    width:350px;
+    height:420px;
+    border-radius: 10px;
+    background-color: white;
+    padding: 15px;;
+}
+
+#ask-box{
+    overflow-y:hidden;
+    display:grid;
+    grid-template-columns: repeat(3,1fr);
+    grid-template-rows: repeat(3,1fr);
+    row-gap:     25px;
+    column-gap: 25px;
+}
+
+#ask-box div{
+    overflow-y:hidden;
+    cursor: pointer;
+    border:1px solid #dedede;
+    text-align: center;
+    border-radius:4px;
+    padding:10px 0;
+    font-size:18px;
+    font-weight: 700;
+    color:#dedede;
+}
+
+#confirm-class{
+    position:relative;
+    outline:none;
+    border:none;;
+    background-color:#7ed321;
+    color:white;
+    font-weight:700;
+    margin:105px 0px 15px 0;
+    padding:15px 0px;
+    border-radius:25px;;
+}
+
+/* for the promotions used in the app */
+#promotion{
+    display:flex;
+    width:60vw;
+    margin:auto auto 50px auto;
+    /* border:2px solid black; */
+    background-color:#e3f1ff;
+    border-radius: 10px;
+    padding: 10px;
+}
+
+.first{
+    min-width:60%;
+}
+
+.first-last{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    /* border:2px solid rebeccapurple; */
+}
+
+#ph-num{
+    width: 22vw;
+    height: 7vh;
+    border-radius: 10px;
+    background:transparent;
+    padding:3px;
+    border: 1px solid black;
+    outline:none;
+}
+
+.second{
+    min-width:100%;
+    min-height:100%;
+}
+
+/* for the footer of the page */
+footer{
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    width:100vw;
+    /* height:70vw; */
+    background-color:#fafafa;
+    /* border:2px solid red; */
+    
+}
+
+.first-box-footer{
+    display:flex;
+    /* border:2px solid black; */
+    flex-direction: column;
+    width:60vw;
+    margin:60px auto;
+    /* background-color:rebeccapurple; */
+}
+
+.first-box-footer h4{
+    margin-bottom:10px;
+}
+
+.infooter-sub-box{
+    display:flex;
+    width:100%;
+    height:50%;
+    /* background-color:red; */
+    margin:4px 0px;
+}
+
+.infooter-sub-box div{
+    padding:5px;
+    display:flex;
+    flex-direction: column;
+    /* border:2px solid black; */
+    width:25%;
+    height:100%;
+}
+
+.infooter-sub-box div li a {
+    text-decoration: none;
+    color:black;
+}
+
+.infooter-sub-box div li{
+    list-style:none;
+    margin:15px 0px;
+}
+
+/* for the part in the footer that is about the company */
+.company-info-footer{
+    display: flex;
+    margin:auto;
+    flex-direction: column;
+    /* border:2px solid black; */
+    width:60vw;
+    height:30vh;
+}
+
+.company-info-box{
+    display:grid;
+    grid-template-rows: repeat(3,1fr);
+    grid-template-columns: repeat(6,1fr);
+    /* border:2px solid green; */
+}
+
+.company-info-box div{
+    text-align: left;
+    row-gap: 12px;
+    column-gap: 5px;
+    padding: 5px;;
+}
+
+.company-info-important{
+    margin:5px 0px;
+    display:grid;
+    grid-template-columns: repeat(5,1fr);
+}
+
+.company-info-important div{
+    text-align:left;
+    column-gap: 3px;
+    padding: 3px;
+}
+
+.company-info-lastBox{
+    width:60vw;
+    margin:5px auto;
+    /* border:2px solid black; */
+    display:grid;
+    grid-template-columns: 1.5fr 1fr;
+}
+
+.company-info-lastBox div{
+    /* border:2px solid black; */
+}
+
+.download-logo{
+    display:grid;
+    column-gap: 7px;;
+    grid-template-columns: repeat(2,1fr);
+}
+
+.logo-store{
+    border-radius:10px;;
+    text-align: center;;
+    padding:3px;
+}
+
+.social-link-box{
+    margin-left:10px;
+    display:grid;
+    grid-template-columns: repeat(6,1fr);
+}
+
+.social-link{
+    width:100%;
+    border:2px solid black;
+}
+
+.social-link a{
+    width:100%;
+}

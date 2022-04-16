@@ -1,0 +1,110 @@
+html{
+    min-height:100%;
+    min-width:100%;
+}
+
+body{
+    background: linear-gradient(180deg,#d4f6de -27.39%,hsla(0,0%,100%,0) 54.27%);
+}
+
+/* for various displays used */
+.inline{
+    display:inline;
+}
+
+.flex{
+    display:flex;
+    flex-direction: column;
+}
+
+.grid{
+    display:grid;
+}
+
+
+/* attributes of the various displays */
+.content-ctr{
+    display:flex;
+    justify-content: center;;
+}
+
+.c-6_r-2{
+    grid-template-columns: repeat(6,1fr);
+    grid-template-rows: repeat(2,1fr);
+}
+
+/* for alinging the text in the center */
+.text-ctr{
+    text-align: center;;
+}
+
+/* to remove any default design in an anchor tag from a text */
+.rem-a-style{
+    text-decoration:none;
+}
+
+/* for background-colors */
+.bg-green{
+    background-color: #7ed321;
+}
+
+.bg-black{
+    background-color: black;
+}
+
+/* for different colors */
+.black{
+    color:black;
+}
+
+.green{
+    color:green;
+}
+
+.white{
+    color:white;
+}
+
+.footer-font-color{
+    color:rgb(73, 73, 73);
+    font-weight: 700;
+    font-size:14px;;
+}
+
+/* text-styles */
+.weight-700{
+    font-weight:700;;
+}
+
+/* for the core font-styles */
+.primary-font{
+    font-family: sans-serif;
+}
+
+.secondary-font{
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+/* animations and special-visuals */
+.transition{
+    transition: all 0.3s;
+}
+
+.transform-scale:hover{
+    transform: scale(1.04);
+}
+
+/* for margins and padding classes used in the making of the site */
+.my-4{
+    margin:4px 0px;
+}
+
+/* for the layout used in chapters and questions page of the webiste */
+.layout{
+    background-color:white;
+    width: 60vw;
+    /* height:auto; */
+    /* height:100px; */
+    margin:auto;
+    /* border:2px solid black; */
+}

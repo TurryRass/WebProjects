@@ -1,0 +1,206 @@
+.HomeContainerWrapper{
+    position:relative;
+    width:100vw;
+    height:100vh;
+    /* max-width: 100%; */
+    z-index:1;
+}
+
+.HeaderContainer{
+    /* border:2px solid olivedrab; */
+    width:90%;
+    position:absolute;
+    top:5%;
+    left:4.5%;
+    display:flex;
+    flex-direction:column;
+}
+
+.HeaderSloganWrapper{
+    width:100%;
+    /* border:2px solid red; */
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.HeaderSloganWrapper{
+    text-align: center;
+    font-size:50px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-weight: 800;
+    margin-top:4%;
+    letter-spacing: -2.7px;
+    line-height:1.3;
+    /* align-items: center; */
+}
+
+.slogan1{
+    color:#26252f
+}
+
+.slogan2{
+    background:radial-gradient(87.99% 87.99% at 82.56% 82.09%,#39dafd 0,#1f8ffb 100%);
+    background-size: 100%;
+    background-repeat: repeat;
+    -webkit-background-clip:text;
+    -webkit-text-fill-color: transparent;
+}
+
+.HeaderLogoWrapper{
+    display:flex;
+    align-items:center;
+    justify-content: space-between;
+    width:100%;
+}
+
+.HeaderLogoWrapper img{
+    box-shadow: 0 6px 8px 0 rgb(32 145 176 / 13%);;
+}
+
+.HeaderCategories{
+    width:90%;
+    margin:0 auto;
+    display:flex;
+    justify-content: space-evenly;
+    flex-wrap:wrap;
+}
+
+.card-category-container{
+    transform: scale(1.05);
+    transition: .7s;
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-top:4%;
+    width:40%;
+    border-radius: 15px;
+    background: white;
+    box-shadow:2px 2px 5px rgb(153, 153, 153);
+    color:#26252f;
+}
+
+.card-category-container:hover{
+    transform: scale(1.09);
+}
+
+.top{
+    margin-top:30px;
+    margin-bottom:20px;
+}
+
+.productText{
+    font-size: 20px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.what,.bottom{
+    margin-top:4%;
+}
+
+.what,.for{
+    line-height:1.3;
+    font-size:30px;
+    font-weight:700;
+}
+
+.top{
+    /* width:40% !important; */
+    display:flex !important;
+    justify-content: center;
+    align-items: center;
+    text-align:center;
+    margin:4% auto;
+}
+
+.bottom{
+    color:grey;
+    font-size:18px;
+}
+
+.course_link{
+    text-decoration: none;
+    font-weight:700;
+    color:rgb(24, 148, 250);
+}
+
+#course2{
+    color: #a314d4 !important;
+}
+
+.arrow{
+    margin-top:2%;
+}
+
+.card-category-container div{
+    /* width:100%; */
+    display:flex;
+    justify-content: center;
+}
+
+.btn_group{
+    display:flex;
+    justify-content:space-between;
+    width:24%;
+    margin-right:3%;
+}
+
+.header_btn{
+    width:46%;
+    font-weight: 800;
+    padding:2.4% 10%;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    border-radius:10px;
+    outline:none;
+    border:1px solid black;
+}
+
+.header_btn:hover{
+    transition: all .1s ease-in-out;
+    color:whitesmoke;
+    box-shadow: 2px 2px 5px rgb(165, 164, 164);;
+}
+
+.CompetitiveExamsPlanContainer{
+    margin:10% 0%;
+    width:100%;
+    /* height:100%; */
+    display:flex;
+    flex-direction: column;
+}
+
+.CompetitiveExamsPlanHead{
+    text-align: center;
+    font-family: sans-serif;
+    font-weight: 800;
+    font-size:55px;
+    line-height:80px;;
+}
+
+.CompetitiveExamsPlans{
+    display:flex;
+    justify-content: space-between;
+    margin-top:3.5%;
+    width:100%;
+    height:auto;
+}
+
+.CompetitiveExamsPlan-card{
+    width: 30%;
+    border-radius: 12px;
+    height: 75vh;
+    box-shadow: 1px 1px 5px black;
+    background-color:white;
+    /* background-color: rgb(228, 228, 228); */
+    transition: .7s;
+}
+
+.CompetitiveExamsPlan-card:hover{
+    transform: scale(1.02);
+}
+
+
+
+

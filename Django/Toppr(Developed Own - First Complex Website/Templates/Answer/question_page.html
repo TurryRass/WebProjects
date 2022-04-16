@@ -1,0 +1,45 @@
+{% extends 'Answer/base.html' %}
+
+{% load static %}
+
+{% block style %}
+    <link rel="stylesheet" href="{% static 'Answer/css_answer/chapter_list.css' %}">
+{% endblock style %}
+
+{% block body %}
+<div class="layout">
+    <div class="head_layout">
+        <h3 class='primary-font' style='font-size:13px;margin:15px 0px 5px 25px'>
+            <a href="/ask/{{chapters_class}}" style='color:inherit;text-decoration:none;'>Class - {{chapters_class}}</a></h3>
+        <h1 class='secondary-font' style='margin:15px 25px;'>{{chapter}} </h1>
+        <h3 class='primary-font' style='font-size:13px;margin:25px;'>{{subject}} <a href='/ask/{{chapters_class}}/{{subject}}' style='color:inherit;text-decoration:none'>>> </a><span>Questions - {{no_questions}}</h3>
+    </div>
+    <div class="questions_layout">
+        {% if questions_uploaded == 'false' %}
+            <div style='font-size:20px;padding-bottom:30px' class='secondary-font'>We will upload questions for '{{chapter}}' soon.</div>
+        {% elif questions_uploaded == 'true' %}
+            {% for question in question_list %}
+                <div class="question-card" id="question{{question.sno}}">
+                    <div class="question secondary-font">Q{{question.sno}}. {{question.question}}</div>
+                    <div class="choose primary-font"> (A) {{question.choose1}}</div>
+                    <div class="choose primary-font"> (B) {{question.choose2}}</div>
+                    <div class="choose primary-font"> (C) {{question.choose3}}</div>
+                    <div class="choose primary-font"> (D) {{question.choose4}}</div>
+                    <div id="answer_question{{question.sno}}" style='display:none;'>{{question.answer}}</div>
+                </div>
+            {% endfor %}
+        {% endif %}
+        <script src="{% static '/Resources/javascript/question.js' %}"></script>
+    </div>
+    {% comment %} <div class="name_layout">
+        {% for chapter in chapters_list %}
+        <div class="col-card">
+            <h3 class='primary-font' style='font-size:17px;margin:25px;cursor:pointer'>
+                <span style='color:rgb(129, 244, 129);font-weight:bold;'>{{forloop.counter}}.</span>
+                <span><a href="{{chapter|replace}}/" style='color:inherit;text-decoration:none'>{{chapter}}</a></span> </h3>
+            <hr style='margin:0px 15px'>
+        </div>
+        {% endfor %}
+    </div> {% endcomment %}
+</div>
+{% endblock body %}

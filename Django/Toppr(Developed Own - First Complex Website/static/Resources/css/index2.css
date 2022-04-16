@@ -1,0 +1,542 @@
+/* this is the css for the second part of our home page that is this file includes css for the part after the css of the "html tag <section> with id = 'HomeContainerWrapper' " */
+
+.homeContainer{
+    width:100%;
+    /* height:100px; */
+    /* position: relative; */
+    /* background-color: greenyellow; */
+    /* border:2px solid red; */
+    left:7%;
+}
+
+.homeContainer div{
+    /* width:100%; */
+}
+
+.awardText{
+    font-size:30px;
+    font-weight: 400;
+    margin:0.5% 0% 3% 0%;
+    line-height:1.5;
+    font-weight:lighter;
+    font-family:sans-serif !important;
+    text-shadow:0.3px 0.3px rgb(173, 173, 173);
+}
+
+.awards{
+    /* height:250px; */
+    display:grid;
+    grid-template-columns:1fr 1fr 1fr;
+    column-gap: 2%;
+    grid-template-rows:auto auto;
+    row-gap: 8%;
+    margin-right:25px;
+    /* border:2px solid black; */
+}
+
+.award{
+    display: flex;
+    align-items:center;
+    background-color: rgb(224, 224, 224);
+    /* background-color:black; */
+    background-color: white;;
+    color:black;;
+    font-size:16px;
+    font-family:sans-serif;
+    border-radius:10px;
+    transition: all 0.5s;;
+}
+
+.award:hover{
+    transform:scale(1.05)
+}
+
+.icon{
+    width: 70px;
+    height: 71px;
+    margin-right: 4%;
+}
+
+.icon img{
+    width:100%;
+    height:100%;
+}
+
+/* css style after the awards part */
+
+.modules{
+    width:100%;
+    margin:12% 0%;
+}
+
+.wrapper_home_new{
+    width:100%;
+    display:flex;
+    justify-content:space-between;
+}
+
+.lhs{
+    width:58% !important;
+    display:flex;
+    flex-direction: column;
+    letter-spacing:0.9px;
+    /* border:2px solid black; */
+}
+
+.rhs_wrapper_new{
+    display: flex;
+    flex-direction: column;;
+    width:40% !important;
+    /* border:2px solid olivedrab; */
+}
+
+.highlightText{
+    letter-spacing:1px;
+    font-family:sans-serif;
+    font-size:20px;
+    font-weight:700;
+    color:#26252f;
+    line-height:32px;
+}
+
+.infoText{
+    letter-spacing:1px;
+    margin-top:5%;
+    font-family:sans-serif;
+    font-size:16px;
+    /* font-weight:400; */
+    color:rgba(84, 84, 101, 0.7);
+    font-weight:400;
+    line-height:32px;;    
+}
+
+.examheader{
+    font-size:55px;
+    font-weight:700;
+    line-height:1.2;
+    font-family:sans-serif;
+}
+
+.examheaderblue{
+    font-size:55px;
+    font-weight:700;
+    line-height:1.2;
+    font-family:sans-serif;
+}
+
+.syllabusContainer{
+    width:100%;
+    margin:2% 0%;
+    /* height:100px; */
+    display:flex;
+    flex-direction: column;;
+    /* border:2px solid  black; */
+}
+
+.syllabus{
+    display:flex;
+    flex-direction: row;;
+    width:100%;
+    /* height:80px; */
+    /* border:2px solid red; */
+}
+
+.syllabus-card{
+    display:flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width:26%;
+    /* height:250px; */
+    /* background-color:rgb(175, 175, 175); */
+    border-radius: 15px;;
+    margin:3%;
+}
+
+.syllabus-card div{
+    width:100%;
+}
+
+.board-icons{
+    width:70%;
+    border:1px solid #dedede;
+    display:grid;
+    grid-template-columns: repeat(3,1fr);
+    grid-template-rows: repeat(3,1fr);
+}
+
+.board-title{
+    font-size:25px;
+    font-family:sans-serif;
+    margin-top:25px;
+    font-weight:700;
+}
+
+.board-description{
+    width:70%;
+    height:55%;
+    margin-top:15px;
+    line-height:25px;
+    letter-spacing:1.2px;
+    font-family:sans-serif;
+    font-size:16px;;
+    /* background-color:blue; */
+}
+
+.btn-primary{
+    cursor:pointer;
+    transition:all 0.5s;
+    font-size:20px;
+    letter-spacing: 1px;
+    /* font-weight: 400; */
+    line-height:20px;;
+    color:white;
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    width:480px;
+    height:72px;
+    border-radius:17px;
+    align-self: center;
+    background-color:#55c25e;
+    margin:80px auto;
+    border:none;
+    border:none;
+}
+
+.btn-primary:hover{
+    transform: scale(1.06);
+    background-color:transparent;
+    color:rgb(71, 71, 71);
+    border:1px solid black;
+}
+
+/* for the video that has been used in this website's home page */
+.theme_video{
+    width:90%;
+    height:550px;
+    margin:8% 0%;
+}
+
+/* css for the achiever column of our website */
+.achieverContainer{
+    width:100%;
+    margin-bottom:5%;
+    justify-content: space-between;
+    /* border:2px solid black; */
+}
+
+.achieverContainer div{
+    width:100%;
+    margin-top:15px;
+    /* height:200px; */
+    text-align: center;
+    /* border:1px solid red; */
+}
+
+.achieverText{
+    font-size:40px !important;
+    letter-spacing: 0.7px;
+    line-height:82px;;
+    font-weight:700;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;;
+}
+
+.achieverGrid{
+    width:100%;
+    height:800px;
+    display:grid;
+    grid-template-columns: repeat(3,1fr);
+    grid-template-rows: repeat(3,1fr);
+    column-gap: 40px;
+    row-gap: 40px;
+    /* border:2px solid red;; */
+}
+
+.achieverGrid div{
+    border-radius: 9px;;
+}
+
+.achieverGrid div:first-of-type {
+    /* border:2px solid rebeccapurple; */
+}
+
+.competition_achiever{
+    display:flex;
+    justify-content: space-evenly;
+    align-items: center;
+    background-color: tan;
+    border-radius: 8px;
+    background-image: radial-gradient(circle at 83% 82%,#74bbff,#1f8ffb 100%);
+    border: 1px solid #dedede;
+    height: 140px;
+    position: relative;
+}
+
+.startup-10{
+    display:flex;
+    justify-content: space-evenly;
+    align-items: center;
+    background-color: tan;
+    border-radius: 8px;
+    background-image: radial-gradient(circle at 83% 82%,#ff74f3,#fb1fc4 100%);
+    border: 1px solid #dedede;
+    height: 140px;
+    position: relative;
+}
+
+.startup-20{
+    display:flex;
+    justify-content: space-evenly;
+    align-items: center;
+    background-color: tan;
+    border-radius: 8px;
+    background-image: radial-gradient(circle at 100% 95%,#50c5d9,#48b7ca 88%);
+    border: 1px solid #dedede;
+    height: 140px;
+    position: relative;
+}
+
+.best-website{
+    display:flex;
+    justify-content: space-evenly;
+    align-items: center;
+    /* background-color: tan; */
+    border-radius: 8px;
+    background-image: radial-gradient(circle at 96% 76%,#9949ff,#7733ce 85%);
+    border: 1px solid #dedede;
+    height: 140px;
+    position: relative;
+}
+
+.iit{
+    display:flex;
+    flex-direction: column;
+}
+
+.first_comment_box{
+    font-family:sans-serif;
+    font-size:17px;
+    font-weight: 400;
+    line-height:35px;
+    text-align: justify;
+}
+
+.commenter_info{
+    font-size: 15px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-weight: 400;
+}
+
+.commenter_info div{
+    text-align:left;      
+    margin: 1px 0px;
+}
+
+.commenter_info div:first-of-type{
+    font-weight:700;
+}
+
+.second_who_commenter{
+    display:flex;
+    align-items: center;;
+}
+
+.first_box{
+    display:flex;
+    flex-direction: column;
+}
+
+.achiever_main{
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size:25px;;
+    color:white;
+}
+
+.achiever_dwarf{
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size:15px;;
+}
+
+/* css style for the promotion part of the home page */
+.promotion-ads{
+    width:100%;
+    height:600px;
+    margin-top:5%;
+    /* border:3px solid red; */
+    display:flex;
+    justify-content: space-between;
+}
+
+/* for the first section tag present in promotion-ads*/
+.promotion-ads section:first-of-type{
+    display:flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width:38%;
+    height:100%;
+    /* border:2px solid black; */
+}
+
+/* for all the divs in the left promotion of promotion ads */
+.promotion-ads section:first-of-type div:first-of-type{
+    width:100%;
+    height:60%;
+    /* border:2px solid blue; */
+    align-content:space-between;
+}
+
+.left-promotion .ads-text{
+    font-size:68px;
+    word-spacing:8px;
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-weight: 700;
+    line-height:80px;
+}
+
+.availability{
+    width:100%;
+    height:50%;
+    display:flex;
+    flex-direction:column;
+}
+
+.availability .show{
+    display:grid;
+    grid-template-columns: repeat(3,1fr);
+    grid-template-rows:60% 40%;
+    /* border:2px solid green; */
+}
+
+.availability .show img{
+    margin:auto auto;
+    background-size:cover;
+}
+
+.store_img{
+    background-color: black;
+    align-items: center;
+    justify-content: space-around;
+    height: 25%;
+    display: flex;
+    flex-direction: row;
+    border-radius: 10px;
+}
+
+.store_img img{
+    transition:all 0.5s;
+}
+
+.store_img img:hover{
+    cursor:pointer;
+    transform:scale(1.05)
+}
+
+.right-promotion{
+    width:62%;
+    height:100%;
+    /* border:2px solid slateblue; */
+}
+
+.tablet-photo{
+    width:100%;
+    height:100%;
+}
+
+/* the css style for the footer of the home page */
+
+.footer-home{
+    width:100%;
+    /* height:500px; */
+    /* border:2px solid black; */
+}
+
+.last-promotion{
+    display:flex;
+    width:100%;
+    height:500px;
+    border-radius:10px;
+    justify-content: space-evenly;
+    color:white;
+    background-image:linear-gradient(-25deg,#39dafd,#1f8ffb);
+    margin-bottom:3%;
+}
+
+.text-form{
+    width: 50%;
+    height:100%;
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    justify-content: space-around;
+
+}
+
+.title-form{
+    width:100%;
+    height:25%;
+    font-size:65px;
+    font-weight:700;
+}
+
+.desc-form{
+    width:100%;
+    height:25%;
+    font-weight:400;
+    line-height:30px;
+    font-size:18px;
+    color:rgb(241, 240, 240);
+    font-family:sans-serif !important;
+}
+
+.last-promotion-img{
+    position: relative;
+    width:40%;
+    height:100%;
+}
+
+.last-promotion-img img{
+    position:absolute;
+    bottom:0;
+    width:100%;
+    height:90%;
+}
+
+/* the style for the try_dare in the last-promotion */
+.try_dare{
+    width:50%;
+    height:11%;
+    display:flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.try,.dare{
+    width:46%;
+    height:100%;
+    padding:2%;
+    /* border:2px solid black; */
+    border-radius: 10px;
+    letter-spacing: 1px;
+    transition:all 0.5s;
+    background-color: transparent;
+    border:2px solid transparent;
+    color:white;
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.try{
+    background-color:black;
+    color:white;;
+}
+
+.try:hover,.dare:hover{
+    transform: scale(1.03);
+}
+
+.dare{
+    /* width:45% !important; */
+    border:1px solid white;
+}
+
+.dare:hover{
+    background-color: white;
+    color:black;
+}
+
+/* for */

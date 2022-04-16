@@ -1,0 +1,36 @@
+{% extends 'Answer/base.html' %}
+
+{% load static %}
+{% load replace %}
+
+<link rel="stylesheet" href="{% static '' %}">
+
+{% block style %}
+<link rel="stylesheet" href="{% static 'Answer/css_answer/utils.css' %}">
+<link rel="stylesheet" href="{% static 'Answer/css_answer/chapter_list.css' %}">
+{% endblock style %}
+
+{% block body %}
+    <div class="layout" id='ch-layout'>
+        <div class="head_layout">
+            <h3 class='primary-font' style='font-size:13px;margin:15px 0px 5px 25px'>
+                <a href="/ask/{{chapters_class}}" style='color:inherit;text-decoration:none;'>Class - {{chapters_class}}</a></h3>
+            <h1 class='secondary-font' style='margin:15px 25px;'>{{subject}} </h1>
+            <h3 class='primary-font' style='font-size:13px;margin:25px;'>{{no_chapters}} Chapters - CBSE</h3>
+        </div>
+        <div class="name_layout">
+            {% if is_chapters == 'false' %}
+                <div class="secondary-font" style="font-weight:bold;font-size:18px;margin:25px;">Chapters of '{{subject}} Class-{{chapters_class}}' Would be Uploaded Soon.</div>
+            {% elif is_chapters == 'true' %}
+                {% for chapter in chapters_list %}
+                    <div class="col-card">
+                        <h3 class='primary-font' style='font-size:17px;margin:25px;'>
+                            <span style='color:rgb(129, 244, 129);font-weight:bold;'>{{forloop.counter}}.</span>
+                            <span><a href="{{chapter|replace}}/" style='color:inherit;text-decoration:none'>{{chapter}}</a></span></h3>
+                        <hr style='margin:0px 15px'>
+                    </div>
+                {% endfor %}
+            {% endif %}
+        </div>
+    </div>
+{% endblock body %}

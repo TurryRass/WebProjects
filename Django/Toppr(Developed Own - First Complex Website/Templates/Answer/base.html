@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="shortcut icon" type="image/ico" href="{% static 'Resources/favicon.ico' %}">
+    <link rel="stylesheet" href="{% static 'Answer/css_answer/index.css' %}">
+    <link rel="stylesheet" href="{% static 'Answer/css_answer/utils.css' %}">
+    {% block style %}{% endblock style %}
+</head>
+<body>
+    <nav id='answer_nav'>
+        <a id='logo' href="/ask/">
+            <img id='logo_img' src="{% static 'Answer/images/logo.png' %}" alt="">
+        </a>
+        <ul id='nav-ul'>
+            <a href="solve/" class='rem-a-style black weight-700 primary-font'>Solve</a>
+            <a href="study/" class='rem-a-style black weight-700 primary-font'>Study</a>
+            <a href="textbooks/" class='rem-a-style black weight-700 primary-font'>Textbooks</a>
+            <a href="guides/" class='rem-a-style black weight-700 primary-font'>Guides</a>
+        </ul>
+        {% if user.is_authenticated %}
+        <div style='margin-left:300px' class="login bg-green white weight-700">{{request.user}}</div>
+        {% else %}
+        <button style='margin-left:300px' id="user-login" class="login bg-green white weight-700 transform-scale transition">LOGIN</button>
+        <button style='margin-left:10px;' id="user-sign_in" class="signin bg-green white weight-700 transform-scale transition">SIGN UP</button>
+        {% endif %}
+        <script>
+            document.getElementById('user-login').addEventListener('click',function(){
+                window.location.href = '/'
+                alert('Please login by clicking on "login" button on the coming page!')
+            })
+            document.getElementById('user-sign_in').addEventListener('click',function(){
+                window.location.href = '/'
+                alert('Please sign_in by clicking on "Sign Up" button on the coming page!')
+            })
+            document.getElementById('')
+        </script>
+    </nav>
+    {% block body %}{% endblock body %}
+    <footer>
+        <div class="first-box-footer primary-font">
+            <h4 style='overflow:hidden'>
+                Classes And Trending Chapters
+            </h4>
+            {% for a,b,c,d in main_list %}
+            <div class="infooter-sub-box">
+                <div>
+                    <h5>CLASS {{a.class_no}}</h5>
+                    <li><a href="/">{{a.ch1}}</a></li>
+                    <li><a href="/">{{a.ch2}}</a></li>
+                    <li><a href="/">{{a.ch3}}</a></li>
+                    <li><a href="/">{{a.ch4}}</a></li>
+                </div>
+                <div>
+                    <h5>CLASS {{b.class_no}}</h5>
+                    <li><a href="/">{{b.ch1}}</a></li>
+                    <li><a href="/">{{b.ch2}}</a></li>
+                    <li><a href="/">{{b.ch3}}</a></li>
+                    <li><a href="/">{{b.ch4}}</a></li>
+                </div>
+                <div>
+                    <h5>CLASS {{c.class_no}}</h5>
+                    <li><a href="/">{{c.ch1}}</a></li>
+                    <li><a href="/">{{c.ch2}}</a></li>
+                    <li><a href="/">{{c.ch3}}</a></li>
+                    <li><a href="/">{{c.ch4}}</a></li>
+                </div>
+                <div>
+                    <h5>CLASS {{d.class_no}}</h5>
+                    <li><a href="/">{{d.ch1}}</a></li>
+                    <li><a href="/">{{d.ch2}}</a></li>
+                    <li><a href="/">{{d.ch3}}</a></li>
+                    <li><a href="/">{{d.ch4}}</a></li>
+                </div>
+            </div>
+            {% endfor %}
+            {% comment %} <div class="infooter-sub-box">
+                <div>
+                    <h5>CLASS</h5>
+                    <li>
+                        <a href=""></a>
+                    </li>
+                </div>
+            </div> {% endcomment %}
+        </div>
+        <div class="company-info-footer">
+            <h4 width='60vw' class='primary-font my-4'>Company</h4>
+            <div class="company-info-box primary-font">
+                <div><a href='/' class='rem-a-style footer-font-color'>About Us</a></div>
+                <div><a href='/' class='rem-a-style footer-font-color'>Brand Resources</a></div>
+                <div><a href='/' class='rem-a-style footer-font-color'>Press</a></div>
+                <div><a href='/' class='rem-a-style footer-font-color'>Customer Stories</a></div>
+                <div><a href='/' class='rem-a-style footer-font-color'>Jobs</a></div>
+                <div><a href='/' class='rem-a-style footer-font-color'>Educators</a></div>
+                <div><a href='/' class='rem-a-style footer-font-color'>Fellowship</a></div>
+                <div><a href='/' class='rem-a-style footer-font-color'>Learning Planet</a></div>
+                <div><a href='/' class='rem-a-style footer-font-color'>Guides</a></div>
+                <div><a href='/' class='rem-a-style footer-font-color'>Ask</a></div>
+                <div><a href='/' class='rem-a-style footer-font-color'>Blog</a></div>
+                <div><a href='/' class='rem-a-style footer-font-color'>Bytes</a></div>
+                <div><a href='/' class='rem-a-style footer-font-color'>News</a></div>
+                <div><a href='/' class='rem-a-style footer-font-color'>Student Reviews</a></div>
+                <div><a href='/' class='rem-a-style footer-font-color'>Parent Reviews</a></div>
+                <div><a href='/' class='rem-a-style footer-font-color'>Teacher Reviews</a></div>
+            </div>
+            <div class="company-info-important primary-font">
+                <div><a href="/" class='rem-a-style footer-font-color'>Terms of Service</a></div>
+                <div><a href="/" class='rem-a-style footer-font-color'>Privacy Policy</a></div>
+                <div><a href="/" class='rem-a-style footer-font-color'>Contact Us</a></div>
+                <div><a href="/" class='rem-a-style footer-font-color'>FAQs</a></div>
+            </div>
+        </div>
+        <div class="company-info-lastBox">
+            <div class="download-logo">
+                <div class='logo-store bg-black'>
+                    <a href="/">
+                        <img src="{% static 'Resources/promotions/play-store.png' %}" alt="">
+                    </a>
+                </div>
+                <div class='logo-store bg-black'>
+                    <a href='/'>
+                        <img src="{% static 'Resources/promotions/brand-apple.png' %}" alt="">
+                    </a>
+                </div>
+            </div>
+            {% comment %} <div class="social-link-box">
+                <div class="social-link">
+                    <a href="">
+                        <img src="{% static 'Resources/promotions/fb.png' %}" alt="">
+                    </a>
+                </div>
+                <div class="social-link">
+                    <a href="">
+                        <img src="{% static 'Resources/promotions/yt.png' %}" alt="">
+                    </a>
+                </div>
+                <div class="social-link">
+                    <a href="">
+                        <img src="{% static 'Resources/promotions/insta.png' %}" alt="">
+                    </a>
+                </div>
+                <div class="social-link">
+                    <a href="">
+                        <img src="{% static 'Resources/promotions/toppr-blog.png' %}" alt="">
+                    </a>
+                </div>
+                <div class="social-link">
+                    <a href="">
+                        <img src="{% static 'Resources/promotions/twitter.png' %}" alt="">
+                    </a>
+                </div>
+                <div class="social-link">
+                    <a href="">
+                        <img src="{% static 'Resources/promotions/linkdein.png' %}" alt="">
+                    </a>
+                </div>
+            </div> {% endcomment %}
+        </div>
+    </footer>
+</body>
+<script src="{% static '/Resources/javascript/style.js' %}"></script>
+</html>

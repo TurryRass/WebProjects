@@ -1,0 +1,69 @@
+*{
+    overflow-y:hidden;
+}
+
+html{
+    overflow-y:scroll;
+}
+
+body{
+        background: linear-gradient(180deg,#efeeee -207.39%,rgb(255, 255, 255) 54.27%);
+}
+
+/* style for the chapter_list shown on the screen */
+
+.head_layout{
+    width:100%;
+    height:20%;
+    margin-top:2px;
+    /* border:2px solid red; */
+}
+
+.name_layout{
+    width:100%;
+    height:78%;
+    margin-top:2px;
+    /* border:2px solid green; */
+}
+
+.col-card{
+    width:100%;
+    transition:all 0.2s;
+    /* border:1px solid black; */
+    /* border:2px solid yellow; */
+}
+
+.col-card:hover{
+    transform:scale(1.02);
+}
+
+
+/* for the questions_list and that part css style */
+
+.questions_layout{
+    margin:0px 25px;
+    /* border:2px solid black; */
+}
+
+.question-card{
+    margin:20px 5px;
+    /* border:2px solid red; */
+}
+
+.question{
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif !important;
+    font-size:17px;
+}
+
+.choose{
+    transition: 0.1s all;
+    cursor:pointer;
+    border:1px solid #e4e3e3;
+    border-radius:5px;
+    margin:10px 30px;
+    padding:15px;
+}
+
+.choose:hover{
+    background-color:rgb(232, 232, 232);
+}

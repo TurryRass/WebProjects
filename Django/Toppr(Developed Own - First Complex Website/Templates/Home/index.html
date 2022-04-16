@@ -1,0 +1,434 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'Resources/css/index.css' %}">
+<link rel="stylesheet" href="{% static 'Resources/css/index2.css' %}">
+<link rel="stylesheet" href="{% static 'Resources/css/utils2.css' %}">
+{% endblock css %}
+
+{% block body %}
+{% if applicable == 'false' %}
+<script>
+    alert('One of your username or email or both has already been taken! Use another username.')
+    window.location.href = '/'
+</script>
+{% elif applicable == 'true' %}
+<script>
+    alert('You have successfully signed_in!')
+    window.location.href = '/'
+</script>
+{% elif right_username == 'false' %}
+<script>
+    alert('Remove space from "{{username}}" and then sign_in again!')
+    window.location.href = '/'
+</script>
+{% endif %}
+
+{% if login_user == 'true' %}
+<script>
+    alert('You have successfully logged in!')
+    window.location.href = '/'
+</script>
+{% elif login_user == 'false' %}
+<script>
+    alert('No user found ! Please Try again.')
+    window.location.href = '/'
+</script>
+{% endif %}
+<section class="HomeContainerWrapper">
+
+    <div class="HeaderContainer">
+        <div class="HeaderLogoWrapper">
+            <a href='/'><img id="logo" src="{% static 'Resources/toppr-new-logo.svg' %}" alt=""></a>
+            <div class="btn_group">
+                {% if user.is_authenticated %}
+                <div id='user_logout_button' class='user_signed_box'>
+                    {{request.user}}
+                </div>
+                <form action="/logout/" method="post"> {% csrf_token %}
+                    <input type="submit" hidden id='user_logout'>
+                </form>
+                <script>
+                    document.getElementById('user_logout_button').onclick = function (){
+                        document.getElementById('user_logout').click()
+                    }
+                </script>
+                {% else %}
+                <button class="black header_btn" id="login">
+                    <a style='text-decoration:none;color:white;'>LOGIN</a>
+                </button>
+                <button class="black header_btn" id="sign_up">
+                    <a style='text-decoration:none;color:white;'>SIGN UP</a>
+                </button>
+                {% endif %}
+            </div>
+        </div>
+        <div class="HeaderSloganWrapper">
+            <span class="slogan1">Better Learning.Better Results.</span>
+            <span class="slogan2">One platform for all your learning needs.</span>
+        </div>
+        <div class="HeaderCategories">  
+            {% for i in home_card_category %}
+            <div class="card-category-container">
+                <div class="top">
+                    <img src="{% static '/Resources/toppr-new-logo.svg' %}" alt="">
+                    <div style='color:white;{{i.default_color}};height:80%;align-items:center;padding:3px 10px;border-radius:10px;' class="productText">{{i.title}}</div>
+                </div>
+                <div class="middle">
+                    <img src="/media/{{i.images}}" alt="">
+                </div>
+                <div class="what font-sans" style='{{i.text_color}} !important,'>
+                    {{i.what_text}}
+                </div>
+                <div class="for font-sans">
+                    {{i.for_text}}
+                </div>
+                <div style="margin-top:5% !important;margin-bottom:2.5%;" class="bottom font-sans">
+                    Classes {{i.for_whom_category}}
+                </div>
+                <div style='display:flex;justify-content:center;margin:3% 0%;align-items:center'>
+                    <a style='{{i.text_color}}' class='font-sans course_link'
+                     {% if forloop.counter == 3 %}
+                     href="ask/" 
+                     {% elif forloop.counter == 1 %}
+                     href="learn/"
+                     {% elif forloop.counter == 2%}
+                     href="codr/"
+                     {% elif forloop.counter == 4%}
+                     href="schoolOs/"
+                    {% endif %}
+                    >EXPLORE <img class="arrow" style='{{i.image_color}}' src="{% static 'Resources/BlueRightArrow.svg' %}" alt="BlueArrow"></a>
+                </div> 
+            </div>
+            {% endfor %}
+            {% comment %} <div class="card-category-container">
+                <div class="top">
+                    <img src="{% static 'Resources/toppr-new-logo.svg' %}" alt="">
+                </div>
+                <div class="middle">
+                    <img src="{% static 'Resources/codr.png' %}" alt="">
+                </div>
+                <div class="what slogan2 font-sans">
+                    Live 1-1 Coding Classes
+                </div>
+                <div class="for font-sans">
+                    for young learners
+                </div>
+                <div style="margin:2.5% 0%;" class="bottom font-sans">
+                    Classes 1 - 12
+                </div>
+                <div style='display:flex;justify-content:center;margin:3% 0%;align-items:center'>
+                    <a class='font-sans course_link' id='course2' href="/">EXPLORE <img class="arrow" src="{% static 'Resources/PurpleRightArrow.svg' %}" alt="BlueArrow"></a>
+                </div>
+            </div> {% endcomment %}
+            {% comment %} <div class="card-category-container">
+                Very Good!
+            </div> {% endcomment %}
+        </div>
+        <div class="CompetitiveExamsPlanContainer">
+            <div class="CompetitiveExamsPlanHead slogan1">
+                Our Plans For Competitive Exams
+            </div>
+            <div class="CompetitiveExamsPlans">
+                {% for i in competitive_exam_cards %}
+                <div style='padding-top:2.5%;' class="CompetitiveExamsPlan-card">
+                    <div class="top">
+                        <img src="{% static 'Resources/toppr-new-logo.svg' %}" alt="">
+                        <div style='color:white;{{i.default_color}};height:80%;align-items:center;padding:3px 10px;border-radius:10px;' class="productText">{{i.title}}</div>
+                    </div>
+                    <div style='width:100%;display:flex;justify-content:center;height:40%;' class="middle">
+                        <img style='width:80%' src="/media/{{i.images}}" alt="">
+                    </div>
+                    <div style='text-align:center;justify-content:center;margin:10% 0% 0% 0%;' class="what font-sans">
+                        {{i.what_text}}
+                    </div>
+                    <div style='text-align:center;{{i.text_color}};marign:2%;' class="for font-sans ">
+                        {{i.for_text}}
+                    </div>
+                    <div style='display:flex;justify-content:center;margin:5% 0%;align-items:center'>
+                        <a style='{{i.text_color}}' class='font-sans course_link' 
+                        {% if forloop.counter == 1 %}
+                        href="jee/"
+                        {% elif forloop.counter == 2 %}
+                        href = "neet/"
+                        {% elif forloop.counter == 3 %}
+                        href = "star/"
+                        {% endif %}>EXPLORE <img class="arrow" style='{{i.image_color}}' src="{% static 'Resources/BlueRightArrow.svg' %}" alt="BlueArrow"></a>
+                    </div> 
+                </div>
+                {% endfor %}
+                {% comment %} <div class="CompetitiveExamsPlan-card"></div>
+                <div class="CompetitiveExamsPlan-card"></div> {% endcomment %}
+                {% comment %} <div class="CompetitiveExamsPlan-card"></div> {% endcomment %}
+            </div>
+        </div>
+        <div class="homeContainer">
+            <div class="awardText text-ctr slogan1">
+                India's most awarded edtech platform
+            </div>
+            <div class="awards">
+                {% for i in edtech_awards %}
+                <div class="award mx-2">
+                    <div class="icon"><img src="/media/{{i.images}}" alt=""></div>
+                    <div class="content">
+                        <div style='font-weight:bold;margin-bottom:8px;' class="name">{{i.title}}</div>
+                        <div class="description">{{i.for_text}}</div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+            <div class="modules">
+                <div class="wrapper_home_new">
+                    <div class="lhs">
+                        <div style='width:81%' class="examheader slogan1">Built for all boards and exams with</div>
+                        <div class="examheaderblue slogan2">widest syllabus</div>
+                        <div class="examheader slogan1">coverage</div>
+                    </div>
+                    <div class="rhs_wrapper_new">
+                        <div class="highlightText">Your learning needs are unique and we do everything to ensure that they are met.</div>
+                        <div class="infoText">Students can chart their own path by creating customised syllabus that helps them attain their learning goals.With over 120,000 syllabus combinations at their disposal to choose from,learning was never so easy.</div>
+                    </div>
+                </div>
+                <div class="syllabusContainer">
+                    <div class="syllabus">
+                        {% for i in syllabus_cards %}
+                        <div class="syllabus-card">
+                            <div class="board-icons">
+                            {% if forloop.counter < 2 %}
+                            {% for j in boards_images %}
+                            <img style='margin:auto;padding:10px;width:78px;height:78px;' src="/media/{{j.image1}}" alt="">
+                            {% endfor %}
+                            {% elif forloop.counter == 2%}
+                            {% for j in exams_images %}
+                            <img style='margin:auto;padding:10px;width:78px;height:78px;' src="/media/{{j.image1}}" alt="">
+                            {% endfor %}
+                            {% elif forloop.counter == 3%}
+                            {% for j in subjects_images %}
+                            <img style='margin:auto;padding:10px;width:78px;height:78px;' src="/media/{{j.image1}}" alt="">
+                            {% endfor %}
+                            {% endif %}
+                            </div>
+                            <div class="board-title">{{i.title}}</div>
+                            <div class="board-description">{{i.for_text}}</div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                    <a style='margin:auto' onclick="document.getElementById('sign_up').click()"><button class="btn-primary">GET STARTED</button></a>
+                    <!-- <button class="btn-primary"><a style='color:white;text-decoration:none;' href="/">GET STARTED</a></button> -->
+                </div>
+                <div class="theme_video">
+                    <iframe style='border-radius:7px;overflow:none;' width='100%' height='100%' src="https://www.youtube.com/embed/tgxqmK2eoec?list=PLXyIamz14kHVYRPLqhQCbPEmnmZxQJ6iJ&amp;autoplay=1&amp;mute=1&amp;loop=1" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="">
+                    </iframe>
+                </div>
+            </div>
+            <div class="achieverContainer flex">
+                <div class="achieverText">
+                    <span class='examheader slogan1'>Students,Parents & Experts</span><br>
+                    <span class='examheader slogan2'>Love Us!</span>
+                </div>
+                <div class="achieverGrid">
+                    <div style="margin:2px 4px !important" class="iit bg-white dedede transition_half-second scale_box">
+                        <div class="first_comment_box">Mock tests on Toppr helped me develop my exam strategy. I was able to focus on my shortcomings and improve them!</div>
+                        <div class="second_who_commenter">
+                            <div class="icon_commenter"><img src="{% static '/Resources/ParentsViews/anand.jpg' %}" alt=""></div>
+                            <div class="commenter_info">
+                                <div class="commenter_name">Harshil</div>
+                                <div class="commenter_what">JEE (Main) 2020</div>
+                            </div>
+                            <div class="any_pic">
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="competition_achiever transition_half-second scale_box">
+                        <div class="first_box">
+                            <div class="achiever_main">Best Education Platform</div>
+                            <div class="achiever_dwarf">IAMAI Awards 2017</div></div>
+                        <div class="second_box">
+                            <img src="{% static '/Resources/ParentsViews/trophy-star.png' %}" alt="">
+                        </div>
+                    </div>
+                    <div class="startup-10 transition_half-second scale_box">
+                        <div class="first_box">
+                            <div class="achiever_main">Top 10       Hottest Startups</div>
+                            <div class="achiever_dwarf">CB Insights 2015</div></div>
+                        <div class="second_box">
+                            <img src="{% static '/Resources/ParentsViews/trophy-12.png' %}" alt="">
+                        </div>
+                    </div>
+                    <div class="startup-20 transition_half-second scale_box">
+                        <div class="first_box">
+                            <div class="achiever_main">Top 20 Startups</div>
+                            <div class="achiever_dwarf">EdtechX Global Awards 2019</div></div>
+                        <div class="second_box">
+                            <img src="{% static '/Resources/ParentsViews/trophy-12.png' %}" alt="">
+                        </div>
+                    </div>
+                    <div class="best-website transition_half-second scale_box">
+                        <div class="first_box">
+                            <div class="achiever_main">Best Education website</div>
+                            <div class="achiever_dwarf">IAMAI Awards 2016</div></div>
+                        <div class="second_box">
+                            <img src="{% static '/Resources/ParentsViews/trophy-star.png' %}" alt="">
+                        </div>
+                    </div>
+                    <div style="margin:2px 4px !important" class="iit bg-white dedede transition_half-second scale_box">
+                        <div class="first_comment_box">Toppr solved my doubts even at 2 am. The more questions I had, I became more confident.  Thanks Toppr</div>
+                        <div class="second_who_commenter">
+                            <div class="icon_commenter"><img src="{% static '/Resources/ParentsViews/thule.jpg' %}" alt=""></div>
+                            <div class="commenter_info">
+                                <div class="commenter_name">Sanika</div>
+                                <div class="commenter_what">Class 10 CBSE Boards</div>
+                            </div>
+                            <div class="any_pic">
+
+                            </div>
+                        </div>
+                    </div>
+                    <div style="margin:2px 4px !important" class="iit bg-white dedede transition_half-second scale_box">
+                        <div class="first_comment_box">Toppr's mock tests increased my efficiency and accuracy. Toppr is great and 'the' best platform for revision!
+                        </div>
+                        <div class="second_who_commenter">
+                            <div class="icon_commenter"><img src="{% static '/Resources/ParentsViews/Yash.png' %}" alt=""></div>
+                            <div class="commenter_info">
+                                <div class="commenter_name">Yash</div>
+                                <div class="commenter_what">JEE (Main) 2020</div>
+                            </div>
+                            <div class="any_pic">
+
+                            </div>
+                        </div>
+                    </div>
+                    <div style="margin:2px 4px !important;" class="iit bg-white dedede transition_half-second scale_box">
+                        <div class="first_comment_box">The live classes stimulate the mind & bring in “being at school feeling” as well. Thanks Toppr you made my child's life.
+                        </div>
+                        <div style='height:100%;' class="second_who_commenter">
+                            <div class="icon_commenter"><img src="{% static '/Resources/ParentsViews/chasmawala.jpg' %}" alt=""></div>
+                            <div class="commenter_info">
+                                <div class="commenter_name">Father of Karan</div>
+                                <div class="commenter_what">IIT-G Student</div>
+                            </div>
+                            <div class="any_pic">
+
+                            </div>
+                        </div>
+                    </div>
+                    <div style="margin:2px 4px !important;" class="iit bg-white dedede transition_half-second scale_box">
+                        <div class="first_comment_box">Toppr helped me get AIR 1 in KCET and AIR 105 in    NEET.I will never forget your contributions in my life. Thank you Toppr!
+                        </div>
+                        <div class="second_who_commenter">
+                            <div class="icon_commenter"><img src="{% static '/Resources/ParentsViews/sridhar.png' %}" alt=""></div>
+                            <div class="commenter_info">
+                                <div class="commenter_name">Shridhar</div>
+                                <div class="commenter_what">KCET,2018</div>
+                            </div>
+                            <div class="any_pic">
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="join_button">
+                    <button onclick="document.getElementById('sign_up').click()" class="btn-primary">JOIN NOW</button>
+                </div>
+            </div>
+            <div class="promotion-ads">
+                <section class="left-promotion">
+                    <div class="ads-text">
+                        <span class='slogan1'>Toppr app is available on </span><span class='slogan2'>all<br> platforms</span>
+                    </div>
+                    <div class="availability">
+                        <div style="font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif" class="show show_img">
+                            <img src="{% static 'Resources/promotions/mobile-g.png' %}" alt="">
+                            <img src="{% static 'Resources/promotions/tablet.png' %}" alt="">
+                            <img src="{% static 'Resources/promotions/Laptop.png' %}" alt="">
+                            <div class="flex text-ctr"><span>Mobiles</span><span style="color:rgb(58, 58, 58);">iOS & Android</span></div>
+                            <div class="flex text-ctr"><span>Tablets</span><span style="color:rgb(58,58,58);">Android & ipad</span></div>
+                            <div class="flex text-ctr"><span>Desktops</span><span style="color:rgb(58,58,58);">All Browsers</span></div>
+                            {% comment %} <div><img src="{% static 'Resources/promotions/mobile-g.png' %}" alt=""></div>
+                            <div><img src="{% static 'Resources/promotions/tablet.png' %}" alt=""></div>
+                            <div><img src="{% static 'Resources/promotions/Laptop.png' %}" alt=""></div> {% endcomment %}
+                        </div>
+                        <div class="store_img">
+                            {% comment %} <img src="{% static 'Resources/promotions/play-store.png' %}" alt=""> {% endcomment %}
+                            <a href='https://play.google.com/store/apps/details?id=haygot.togyah.app&referrer=utm_source%3Dreferral%26utm_medium%3Dlanding_app_fragment' target='_blank'><img src="{% static 'Resources/promotions/play-store.png' %}" alt=""></a>
+                            <a href="https://apps.apple.com/in/app/toppr-learning-app-class-5-12/id1043125663" target='_blank'><img src="{% static 'Resources/promotions/brand-apple.png' %}" alt=""></a>
+                        </div>
+                    </div>
+                </section>
+                <section class="right-promotion">
+                    <img id='tablet-photo' src="{% static 'Resources/promotions/tablet-and-photo.png' %}" alt="">
+                </section>
+            </div>
+        </div>
+        <footer class="footer-home">
+            <div class="last-promotion">
+                <div class="text-form flex">
+                    <div class="title-form">
+                        Book a free online counselling session
+                    </div>
+                    <div class="desc-form">
+                        Have any questions? An experienced Toppr Agent will be able to answer all your questions you have and discuss academic goals as well as the unique needs of the learner
+                    </div>
+                    <div class="try_dare">
+                        <button class="try">BOOK DEMO</button>
+                        <button class="dare">SUBSCRIBE NOW</button>
+                    </div>
+                </div>
+                <div class="last-promotion-img"><img src="{% static 'Resources/promotions/boy-with-tablet.png' %}" alt=""></div>
+            </div>
+        </footer>
+        <div style='display:none;align-items:center;justify-content:center;position:fixed;top:0;left:0;bottom:0;right:0;background-color:rgb(0,0,0,0.3);width:100vw;height:100vh;;' 
+        id="login-container">
+            <div style='background-color:white;width:500px;border-radius:5px;max-width:100%;height:400px;' id="sub-modal-card">
+                <h1 class='modal-card-title'>Login Here</h1>
+                <form action="/login/" method="post" id='login-form'> {% csrf_token %}
+                    <input type="text" name="username" id="username" placeholder="Username" required>
+                    <input type="password" name="userpass" id="userpass" placeholder="Password" required>
+                    <input type="submit" id="modal-button-login" class='modal-button' value="Login">
+                </form>
+            </div>
+        </div>
+        <div style='display:none;align-items:center;justify-content:center;position:fixed;top:0;left:0;bottom:0;right:0;background-color:rgb(0,0,0,0.3);width:100vw;height:100vh;;' 
+        id="sign_up-container">
+            <div style='background-color:white;width:700px;max-width:100%;height:400px;border-radius:5px;' class="sub-modal-card">
+                <h1 class='modal-card-title'>SignUp Here</h1>
+                <form action="/sign_in/" method="post" id='login-form'> {% csrf_token %}
+                    <input type="text" name="username" id="username" placeholder="Username (First Name)" required minlength="3">
+                    {% comment %} <input type="number" name="class" id="class" placeholder="Class (Write Stream If Any in Bracket)">
+                    <input type="text" name="stream" id="stream" placeholder="Write Stream If Any"> {% endcomment %}
+                    <input type="email" name="user_email" id="user_email" placeholder="Email" required>
+                    <input type="password" name="userpass" id="userpass" placeholder="Password" required minlength="5">
+                    <input type="submit" id="modal-button-sign_up" class='modal-button' value="Sign up">
+                </form>
+            </div>
+        </div>
+        <script>
+            const login_container = document.getElementById('login-container')
+            const login = document.getElementById('login')
+            const modal_button_login = document.getElementById('modal-button-login')
+
+            // for the sign_up portion of the website
+            const sign_up = document.getElementById('sign_up')
+            const sign_up_container = document.getElementById('sign_up-container')
+            const modal_button_sign_up = document.getElementById('modal-button-sign_up')
+
+            // for the login part
+            login.addEventListener('click',function(){
+                login_container.style.display = 'flex'
+            })
+
+            // for the sign_up part
+            modal_button_sign_up.addEventListener('click',function(){
+                
+                
+            })
+            sign_up.addEventListener('click',function(){
+                sign_up_container.style.display = 'flex'
+            })
+        </script>
+    </div>
+</section>
+{% endblock body %}

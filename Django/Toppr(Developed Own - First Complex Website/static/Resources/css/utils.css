@@ -1,0 +1,73 @@
+body,html{
+    /* overflow:visible; */
+    overflow-x:hidden;
+    background-color:#f9fafb;
+    width:100vw;
+    height:100vh;
+}
+
+
+*{
+    padding: 0;
+    margin: 0;
+    /* margin:auto; */
+    /* overflow:hidden; */
+    box-sizing: border-box;
+}
+
+.font-sans{
+    font-family: sans-serif;
+    /* font-weight:700; */
+}
+
+.text-ctr{
+    text-align: center ;
+}
+
+.mx-2{
+    padding:15px;;
+}
+
+.border-black{
+    border:2px solid black;
+}
+
+.border-green{
+    border:2px solid green;
+}
+
+.black{
+    background-color:black;
+    color:white;
+}
+
+.flex{
+    display:flex;
+    flex-direction:column;;
+}
+
+/* the css style for the grid part in the achievers place of the website's home page. */
+.dimension-grid-2{
+    /* grid-row: ; */
+    border:2px solid red !important;
+    width:700px;
+    height:250px;
+}
+
+.transition_half-second{
+    transition: all 0.5s;
+}
+
+.scale_box:hover{
+    transform: scale(1.02);
+}
+
+/* for the dedede border */
+.dedede{
+    border:1px solid #dedede
+}
+
+/* for white background */
+.bg-white{
+    background-color:white;
+}

@@ -1,0 +1,26 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    {% block css %}{% endblock css %}
+    <link rel="stylesheet" href="{% static 'Home/css/nav.css' %}">
+    <link rel="stylesheet" href="{% static 'Resources/css/utils.css' %}">
+</head>
+<body>
+    <nav>
+        <ul id='nav-container'>
+            <a class='nav-link' href="/"><img src="{% static 'Resources/homeicon.svg' %}" alt=""><div class='link-dash'></div></a>
+            <a style="letter-spacing:0.5px;" href="learn/" class='nav-link'>LEARNING APP <div class="link-dash"></div></a>
+            <a href="ask/" class='nav-link'>ANSWR <div class="link-dash"></div></a>
+            <a href="codr/" class='nav-link'>CODR <div class="link-dash"></div></a>
+            <a href="schoolOs/" class='nav-link'>SCHOOLOS <div class="link-dash"></div></a>
+            <a href="star/" class='nav-link'>STAR <div class="link-dash"></div></a>
+        </ul>
+    </nav>
+    {% block body %}{% endblock body %}
+</body>
+</html>

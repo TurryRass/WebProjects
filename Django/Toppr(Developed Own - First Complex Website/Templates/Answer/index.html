@@ -1,0 +1,72 @@
+{% extends 'Answer/base.html' %}
+
+{% load static %}
+{% load replace %}
+
+{% block body %}
+<div id="index-container" class='flex content-ctr'>
+    <h1 class='text-ctr  weight-700 secondary-font'>Get verified Solutions to all your doubts</h1>
+    <form method="get" action="/" class="content-ctr"> 
+        <input type="search" name="search-material" id="search-material" class='weight-700' placeholder="search for questions and chapters" autocomplete = 'off'>
+    </form>
+    <div class="subject-container flex">
+        <div class='primary-font' id="subject-header">
+            <h2>Browse By Subjects</h2>
+            <h2 style="color:#249efb"><a style='text-decoration:none;color:inherit;' href="/ask">Update Class</a></h2>
+        </div>
+        <div id='subject-grid' class="grid c-6_r-2">
+            {% for subject in subjects %}
+            <div style='margin:auto;text-align:center;'>
+                <a href="/ask/{{student_class}}/{{subject.name|replace}}/" id="{{subject.sno}}">
+                    <img src="/media/{{subject.image}}" alt="">
+                </a>
+                <div class="subject-name primary-font">
+                    {{subject.name}}
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+{% if show_classer == 'true' %}
+<div id="ask-info" class="primary-font" >
+    <div id='ask-model'>
+        <h2 style='overflow-y:hidden' id="class-selector" class="my-4">Select Class</h2>
+        <div id="ask-box" class="my-4">
+            <div>5th</div>
+            <div>6th</div>
+            <div>7th</div>
+            <div>8th</div>
+            <div>9th</div>
+            <div>10th</div>
+            <div>11th</div>
+            <div>12th</div>
+            <div>13th(Sc)</div>
+        </div>
+        <button disabled id="confirm-class">
+            Choose Your Class 
+        </button>
+    </div>
+</div>
+{% endif %}
+
+<div id="promotion" class="primary-font">
+    <div class="first">
+        <h1 style="margin:15px 0px;">Get the Free Answr app</h1>
+        <h4 style="margin:15px 0px;font-weight:400">Click a picture with our app and get instant verified solutions</h4>
+        <div class="first-last">
+            <div class="bar-code">
+                <img src="{% static 'Answer/images/qrCode_home.png' %}" alt="">
+            </div>
+            <span class="text-ctr">OR</span>
+            <form action="">
+                <input type="number" name="" id="ph-num" maxlength='10'>
+            </form>
+        </div>
+    </div>
+    <div class="second">
+        <img src="{% static 'Answer/images/appimg.png' %}" alt="">
+    </div>
+</div>
+{% endblock body %}
